@@ -12,6 +12,8 @@
 @import url("components/image-gallery.css");
 @import url("components/meme-editor.css");
 @import url("components/main-screen.css");
+@import url("components/canvas-container.css");
+@import url("components/control-area.css");
 
 /* MQ */
 @import url("basics/mq.css");

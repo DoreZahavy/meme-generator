@@ -1,6 +1,10 @@
-/* .image-gallery .grid-container img{
-    width: 100px;
-} */
+.image-gallery{ 
+    display: none;
+}
+
+.image-gallery.show{
+    display: block;
+}
 
 
 .image-gallery .grid-container{

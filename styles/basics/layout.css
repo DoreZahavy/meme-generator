@@ -1,6 +1,8 @@
+/* MAIN */
+
 .main-layout {
     display: grid;
-    grid-template-columns: 20px 1fr 20px;
+    grid-template-columns: 40px 1fr 40px;
 }
 
 .main-layout > *:not(.full) {
@@ -11,10 +13,17 @@
     grid-column: 1 / -1;
 }
 
-/* CARD */
+/* EDITOR */
 
-.card-layout {
+.editor-grid {
     display: grid;
-    row-gap: var(--layout-padding-ver);
-    margin-bottom: var(--layout-padding-ver);
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 60vh;
+    row-gap: 20px;
+    margin-top: 15vh;
+    height: 60vh;
+}
+
+.meme-editor .control-area{
+    grid-column: 2;
 }
