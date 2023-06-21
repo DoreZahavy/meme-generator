@@ -21,36 +21,101 @@ var gImgs = [
     { id: 18, url: 'img/18.jpg', keywords: ['movies', 'friends'] }
 ]
 
+const STORAGE_KEY_MEMES = 'savedMemesDB'
+
 var gSavedMemes = []
+loadMemes()
 
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
-    lines: [
-        {
-            txt: 'text here',
-            size: 20,
-            colorFill: 'white',
-            colorStroke: 'black',
-            font: 'impact',
-            fontSize: 40
-        }
-    ]
+    lines: []
 }
+
+var gIsDrag = false
 
 var gKeywordSearchCountMap = { 'funny': 0, 'cat': 0, 'baby': 0 }
 
 
-function setMeme(imgId){
-gMeme.selectedImgId = imgId
+function setMeme(imgId) {
+    gMeme.selectedImgId = imgId
 }
 
-function getMeme(){
+function getMeme() {
     return gMeme
 }
 
-function setLineTxt(txt){
+function setLineTxt(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
     console.log('txt:', txt)
     console.log('gMeme.lines[gMeme.selectedLineIdx].txt:', gMeme.lines[gMeme.selectedLineIdx].txt)
 }
+
+function addLine(x, y) {
+    console.log('gMeme.lines.length:', gMeme.lines.length)
+    if (gMeme.lines.length === 1) y = (y * 2) - 40
+    gMeme.lines.push(_createLine(x, y))
+
+    selectLine( gMeme.lines.length - 1)
+
+}
+
+function loadMemes() {
+    let memes = loadFromStorage(STORAGE_KEY_MEMES)
+    if (!memes) memes = []
+    gSavedMemes = memes
+}
+
+function saveMeme() {
+    gSavedMemes.push(gMeme)
+    saveToStorage(STORAGE_KEY_MEMES, gSavedMemes)
+}
+
+function _createLine(x, y) {
+
+    return {
+        txt: 'text here',
+        size: 20,
+        colorFill: 'white',
+        colorStroke: 'black',
+        font: 'impact',
+        fontSize: 40,
+        x,
+        y
+    }
+}
+
+function findLineIdx({ x, y }) {
+    
+    const lineIdx = gMeme.lines.findIndex((line,lineIdx) => {
+        const txtWidth = measureTextWidth(lineIdx)
+        return x >= line.x-txtWidth/2 && x <= line.x + txtWidth/2
+          && y >= line.y-line.fontSize/2 && y <= line.y + line.fontSize/2
+    })
+    
+    selectLine(lineIdx)
+    // setTxtInput(gMeme.lines[gMeme.selectedLineIdx].txt)
+}
+
+function selectLine(lineIdx){
+    gMeme.selectedLineIdx = lineIdx
+}
+
+function setLineDrag(isDrag) {
+    gIsDrag = isDrag
+  }
+
+  function getIsDrag(){
+    return gIsDrag
+  }
+
+  function moveLine(dx, dy) {
+    gMeme.lines[gMeme.selectedLineIdx].x += dx
+    gMeme.lines[gMeme.selectedLineIdx].y += dy
+  
+  }
+
+  function getSelectedTxt(){
+    return gMeme.lines[gMeme.selectedLineIdx].txt
+  }
+

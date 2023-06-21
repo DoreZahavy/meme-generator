@@ -1,4 +1,5 @@
 .canvas-container{
     background-color: blanchedalmond;
     height: 100%;
+    cursor: grab;
 }

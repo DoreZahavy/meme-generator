@@ -19,6 +19,9 @@
 
 .image-gallery .grid-container img{
     width: 100%;
+    /* object-fit: cover; */
+    /* background-position: center; */
+
 }
 
 .image-gallery .grid-container img:nth-of-type(4n){

@@ -2,3 +2,16 @@
     height: 100%;
     outline: 1px solid black;
 }
+
+.control-area .fb-upload img{
+    width: 20px;
+    height: 20px;
+}
+.control-area .fb-upload{
+    width: 30px;
+    height: 30px;
+    background-color: lightgray;
+}
+.control-area .fb-upload:hover{
+    background-color: rgb(30, 48, 80);
+}
