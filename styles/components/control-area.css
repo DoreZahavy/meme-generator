@@ -15,3 +15,7 @@
 .control-area .fb-upload:hover{
     background-color: rgb(30, 48, 80);
 }
+
+.control-area button img{
+    width: 15px;
+}

@@ -56,7 +56,7 @@ function onDown(ev) {
 function onMove(ev) {
     const  isDrag  = getIsDrag()
     if (!isDrag) return
-    console.log('Moving the line')
+    // console.log('Moving the line')
   
     const pos = getEvPos(ev)
     // Calc the delta, the diff we moved
@@ -117,8 +117,8 @@ function onOpenEditor(imgId) {
 
 function renderMeme() {
     const meme = getMeme()
-    document.querySelector('#line-txt').value = meme.lines[meme.selectedLineIdx].txt
-    console.log('meme:', meme)
+    
+    // console.log('meme:', meme)
     // const img = document.querySelector(`.img${meme.selectedImgId}`)
     const img = new Image()
     img.src = `img/bgs/${meme.selectedImgId}.jpg`
@@ -145,7 +145,7 @@ function placeTxt(line,idx) {
     gCtx.textBaseline = 'middle'
     gCtx.fillText(line.txt, line.x, line.y)
     gCtx.strokeText(line.txt, line.x, line.y)
-    console.log('gCtx.measureText(line.txt):', gCtx.measureText(line.txt).width)
+    // console.log('gCtx.measureText(line.txt):', gCtx.measureText(line.txt).width)
 }
 
 function onAddLine(){
@@ -177,8 +177,28 @@ function measureTextWidth(lineIdx){
     return gCtx.measureText(gMeme.lines[lineIdx].txt).width
 }
 
-function onSetFontSize(){
-    
+function onSetFontSize(sizeDiff){
+    setFontSize(sizeDiff)
+    renderMeme()
+}
+
+function onSetColorStroke(color){
+    console.log('color',color)
+    setColorStroke(color)
+    renderMeme()
+}
+
+function onSetColorFill(color){
+    setColorFill(color)
+    renderMeme()
+}
+
+function setSelectedLine(line){
+    console.log('line:', line)
+    document.querySelector('#line-txt').value = line.txt
+    document.querySelector('#colorStroke').value = line.colorStroke
+    document.querySelector('#colorFill').value = line.colorFill
+
 }
 
 

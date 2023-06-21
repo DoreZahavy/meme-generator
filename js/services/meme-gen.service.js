@@ -75,9 +75,9 @@ function _createLine(x, y) {
 
     return {
         txt: 'text here',
-        size: 20,
-        colorFill: 'white',
-        colorStroke: 'black',
+        // size: 20,
+        colorFill: '#fefefe',
+        colorStroke: '#010101',
         font: 'impact',
         fontSize: 40,
         x,
@@ -99,6 +99,8 @@ function findLineIdx({ x, y }) {
 
 function selectLine(lineIdx){
     gMeme.selectedLineIdx = lineIdx
+    console.log('lineIdx:', lineIdx)
+    setSelectedLine( gMeme.lines[gMeme.selectedLineIdx])
 }
 
 function setLineDrag(isDrag) {
@@ -117,5 +119,22 @@ function setLineDrag(isDrag) {
 
   function getSelectedTxt(){
     return gMeme.lines[gMeme.selectedLineIdx].txt
+  }
+
+  function setFontSize(sizeDiff){
+    const line = gMeme.lines[gMeme.selectedLineIdx]
+    // line.fontSize = (line.fontSize>=80||)? line.fontSize:line.fontSize+sizeDiff
+    line.fontSize+=sizeDiff
+    if(line.fontSize>=80||line.fontSize<=20) line.fontSize-=sizeDiff
+
+  }
+
+  function setColorStroke(color){
+    console.log('color:', color)
+    gMeme.lines[gMeme.selectedLineIdx].colorStroke = color
+  }
+
+  function  setColorFill(color){
+    gMeme.lines[gMeme.selectedLineIdx].colorFill = color
   }
 

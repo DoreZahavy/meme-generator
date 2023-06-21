@@ -23,6 +23,7 @@
         </Header>
 
         <div class="image-gallery">
+            <h1>Choose meme pic</h1>
             <div class="grid-container">
                 <img onclick="onOpenEditor(1)" src="img/bgs/1.jpg" alt="">
                 <img onclick="onOpenEditor(2)" src="img/bgs/2.jpg" alt="">
@@ -61,6 +62,11 @@
                 <div class="control-area">
                     <input type="text" oninput="onTextInput(this.value)" name="line-txt" id="line-txt">
                     <button onclick="onAddLine()">Add Line</button>
+                    <button onclick="onSetFontSize(5)"><img src="img/icons/big-font.png" alt="" srcset=""></button>
+                    <button onclick="onSetFontSize(-5)"><img src="img/icons/small-font.png" alt=""></button>
+                    <input type="color" oninput="onSetColorStroke(this.value)" name="colorStroke" id="colorStroke" value="#010101">
+                    <input type="color" oninput="onSetColorFill(this.value)" name="colorFill" id="colorFill" value="#ffffff">
+                    <!-- <input type="color" name="colorFill" id="colorFill" value1="#fefefe"> -->
                     <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
                     <button onclick="onSaveMeme()">Save</button>
                     <button class="fb-upload flex-center" onclick="onUploadImg()"><img src="img/icons/facebook.png" alt=""></button>
