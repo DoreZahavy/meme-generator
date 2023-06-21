@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Document</title>
+</head>
+
+<body onload="onInit()">
+    <main class="main-layout">
+
+        <Header class="main-header full main-layout">
+            <h2 class="logo">memegen</h2>
+            <ul class="nav flex clean-list">
+                <li>Gallery</li>
+                <li>Saved</li>
+            </ul>
+        </Header>
+
+        <div class="image-gallery">
+            <div class="grid-container">
+                <img src="img/square/1.jpg" alt="">
+                <img src="img/square/2.jpg" alt="">
+                <img src="img/square/3.jpg" alt="">
+                <img src="img/square/4.jpg" alt="">
+                <img src="img/square/5.jpg" alt="">
+                <img src="img/square/6.jpg" alt="">
+                <img src="img/square/7.jpg" alt="">
+                <img src="img/square/8.jpg" alt="">
+                <img src="img/square/9.jpg" alt="">
+                <img src="img/square/10.jpg" alt="">
+                <img src="img/square/11.jpg" alt="">
+                <img src="img/square/12.jpg" alt="">
+                <img src="img/square/13.jpg" alt="">
+                <img src="img/square/14.jpg" alt="">
+                <img src="img/square/15.jpg" alt="">
+                <img src="img/square/16.jpg" alt="">
+                <img src="img/square/17.jpg" alt="">
+                <img src="img/square/18.jpg" alt="">
+            </div>
+        </div>
+        
+        <div class="meme-editor">
+            <div class="canvas-container">
+                <canvas class="meme-canvas"></canvas>
+            </div>
+            <div class="control-area"></div>
+        </div>
+        
+        <div class="saved"></div>
+        
+        <footer class="main-footer"></footer>
+    </main>
+
+
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/meme-gen.service.js"></script>
+    <script src="js/meme-gen.control.js"></script>
+</body>
+
+</html>

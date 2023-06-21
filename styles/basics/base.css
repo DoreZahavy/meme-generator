@@ -1,0 +1,43 @@
+/* general */
+* {
+    box-sizing: border-box;
+}
+
+/* tags */
+html {
+    /* color: var(--clrPrimarybase);
+    font-family: playfair, serif;
+    line-height: 1.71428571; */
+}
+
+body {
+    margin: 0;
+    /* font-size: 0.875rem; */
+}
+
+img {
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+    margin: 0 0 0.8em;
+    line-height: 1.4;
+}
+
+/* h2 {
+    font-size: 2.1428571em;
+} */
+
+/* a {
+    color: var(--clrPrimary-1);
+}
+
+a:hover {
+    text-decoration: none;
+} */

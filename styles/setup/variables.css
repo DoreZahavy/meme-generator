@@ -1,0 +1,15 @@
+:root {
+    /* pallete */
+    --clrPrimary2: #f0f0f0;
+    --clrPrimary1: #b4ad9e;
+    --clrPrimarybase: #626262;
+    --clrPrimary-1: #000;
+
+  
+
+    /* bp */
+
+    --l: 1060px;
+    --m: 860px;
+    --s: 600px;
+}
