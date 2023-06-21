@@ -8,15 +8,26 @@
 
 /* SMALL */
 @media (min-width: 640px) {
- 
+    
+    .image-gallery .grid-container{
+        columns: 2;
+    }
 }
 
 /* MEDIUM */
 @media (min-width: 900px) {
-   
+    .main-layout {
+        grid-template-columns: 20px 1fr 20px;
+    }
+    .image-gallery .grid-container{
+        columns: 3;
+    }
 }
 
 /* LARGE  */
 @media (min-width: 1100px) {
-
+  
+    .image-gallery .grid-container{
+        columns: 4;
+    }
 }
