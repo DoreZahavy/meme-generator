@@ -7,7 +7,7 @@ const gElEditor = document.querySelector('.meme-editor')
 
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
-function onInit(){
+function onInit() {
     console.log('init!');
     resizeCanvas()
     addListeners()
@@ -75,12 +75,7 @@ function getEvPos(ev) {
     return pos
 }
 
-function renderImg(img) {
-    console.log('img:', img)
-    // Draw the img on the canvas
-    gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-}
+
 
 function resizeCanvas() {
     console.log('hi');
@@ -89,18 +84,55 @@ function resizeCanvas() {
     gElCanvas.height = elContainer.offsetHeight
 }
 
-function onOpenEditor(img,imgId){
-    console.log('img:', img)
+function onOpenEditor(imgId) {
     gElGallery.classList.remove('show')
     gElEditor.classList.add('show')
     resizeCanvas()
     setMeme(imgId)
-    renderMeme(img)
-    // renderImg(img)
+    renderMeme(imgId)
 }
 
-function renderMeme(img){
+function renderMeme() {
     const meme = getMeme()
-    gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+    console.log('meme:', meme)
+    // const img = document.querySelector(`.img${meme.selectedImgId}`)
+    const img = new Image()
+    img.src = `img/bgs/${meme.selectedImgId}.jpg`
+    img.onload = () => {
+        gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+        placeTxt(meme)
+    }
 }
+
+function placeTxt({selectedLineIdx,lines}) {
+    const currLine = lines[selectedLineIdx]
+    document.querySelector('#line-txt').value = currLine.txt
+    
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = currLine.colorStroke
+    gCtx.fillStyle = currLine.colorFill
+    gCtx.font =  `${currLine.fontSize}px ${currLine.font}`
+    gCtx.textAlign = 'center'
+    gCtx.textBaseline = 'middle'
+    gCtx.fillText(currLine.txt, gElCanvas.width/2, 40)
+    gCtx.strokeText(currLine.txt, gElCanvas.width/2, 40)
+}
+function onTextInput(txt){
+    setLineTxt(txt)
+    renderMeme()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

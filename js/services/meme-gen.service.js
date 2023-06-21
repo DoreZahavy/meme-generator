@@ -21,14 +21,19 @@ var gImgs = [
     { id: 18, url: 'img/18.jpg', keywords: ['movies', 'friends'] }
 ]
 
+var gSavedMemes = []
+
 var gMeme = {
     selectedImgId: 0,
-    selectedLineIdx: 1,
+    selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: 'text here',
             size: 20,
-            color: 'red'
+            colorFill: 'white',
+            colorStroke: 'black',
+            font: 'impact',
+            fontSize: 40
         }
     ]
 }
@@ -42,4 +47,10 @@ gMeme.selectedImgId = imgId
 
 function getMeme(){
     return gMeme
+}
+
+function setLineTxt(txt){
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt
+    console.log('txt:', txt)
+    console.log('gMeme.lines[gMeme.selectedLineIdx].txt:', gMeme.lines[gMeme.selectedLineIdx].txt)
 }
