@@ -2,3 +2,17 @@
     background-color: antiquewhite;
   
 }
+
+.main-header .nav-container .nav{
+
+}
+
+.main-header .nav-container .nav>*{
+    /* margin-inline-start: 12px; */
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+}

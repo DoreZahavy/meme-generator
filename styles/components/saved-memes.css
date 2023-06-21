@@ -1,0 +1,8 @@
+.saved-memes{
+    display: none;
+    border: 2px solid black;
+    height: 1000px;
+}
+.saved-memes.show{
+    display: block;
+}

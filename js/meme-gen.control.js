@@ -4,6 +4,7 @@ const gElCanvas = document.querySelector('.meme-canvas')
 const gCtx = gElCanvas.getContext('2d')
 const gElGallery = document.querySelector('.image-gallery')
 const gElEditor = document.querySelector('.meme-editor')
+const gElSavedMemes = document.querySelector('.saved-memes')
 
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
@@ -14,7 +15,16 @@ function onInit() {
     resizeCanvas()
     addListeners()
     gElGallery.classList.add('show')
-    
+    renderImages()
+
+}
+
+function renderImages() {
+    const elGrid = document.querySelector('.grid-container')
+    const images = getImages()
+    var strHTMLs = images.map(image => `
+    <img onclick="onOpenEditor(${image.id})" src="img/bgs/${image.id}.jpg" alt="">`)
+    elGrid.innerHTML = strHTMLs.join('')
 }
 
 function addListeners() {
@@ -23,6 +33,7 @@ function addListeners() {
     window.addEventListener('resize', resizeCanvas)
     // gElCanvas.addEventListener('click',draw())
 }
+
 function addMouseListeners() {
     gElCanvas.addEventListener('mousedown', onDown)
     gElCanvas.addEventListener('mousemove', onMove)
@@ -39,25 +50,25 @@ function onDown(ev) {
     const pos = getEvPos(ev)
 
     findLineIdx(pos)
-    
+
     // const {line} = getMeme()
 
     // document.querySelector('.line-txt').value = getSelectedTxt()
-    
+
     setLineDrag(true)
 
     gLastPos = pos
 
     document.body.style.cursor = 'grabbing'
     renderMeme()
-  
+
 }
 
 function onMove(ev) {
-    const  isDrag  = getIsDrag()
+    const isDrag = getIsDrag()
     if (!isDrag) return
     // console.log('Moving the line')
-  
+
     const pos = getEvPos(ev)
     // Calc the delta, the diff we moved
     const dx = pos.x - gLastPos.x
@@ -72,7 +83,7 @@ function onMove(ev) {
 function onUp() {
 
     setLineDrag(false)
-    
+
     document.body.style.cursor = 'grab'
 }
 
@@ -97,8 +108,6 @@ function getEvPos(ev) {
     return pos
 }
 
-
-
 function resizeCanvas() {
     console.log('hi');
     const elContainer = document.querySelector('.canvas-container')
@@ -109,15 +118,16 @@ function resizeCanvas() {
 function onOpenEditor(imgId) {
     gElGallery.classList.remove('show')
     gElEditor.classList.add('show')
+    gElSavedMemes.classList.remove('show')
     resizeCanvas()
     setMeme(imgId)
-    addLine(gElCanvas.width/2, 40)
-    renderMeme(imgId)
+    addLine(gElCanvas.width / 2, 40)
+    renderMeme()
 }
 
 function renderMeme() {
     const meme = getMeme()
-    
+
     // console.log('meme:', meme)
     // const img = document.querySelector(`.img${meme.selectedImgId}`)
     const img = new Image()
@@ -125,22 +135,22 @@ function renderMeme() {
     img.onload = () => {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        meme.lines.forEach((line,idx) =>{placeTxt(line,idx)})
-        
+        meme.lines.forEach((line, idx) => { placeTxt(line, idx) })
+
     }
 }
 
-function placeTxt(line,idx) {
+function placeTxt(line, idx) {
 
     // const line = lines[selectedLineIdx]
-    
-    let height = gElCanvas.height/2
+
+    let height = gElCanvas.height / 2
     // if(idx ===0)
 
     gCtx.lineWidth = 2
     gCtx.strokeStyle = line.colorStroke
     gCtx.fillStyle = line.colorFill
-    gCtx.font =  `${line.fontSize}px ${line.font}`
+    gCtx.font = `${line.fontSize}px ${line.font}`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
     gCtx.fillText(line.txt, line.x, line.y)
@@ -148,19 +158,24 @@ function placeTxt(line,idx) {
     // console.log('gCtx.measureText(line.txt):', gCtx.measureText(line.txt).width)
 }
 
-function onAddLine(){
-    const width = gElCanvas.width/2
-    const height = gElCanvas.height/2
-    addLine(width,height)
+function onAddLine() {
+    const width = gElCanvas.width / 2
+    const height = gElCanvas.height / 2
+    addLine(width, height)
     renderMeme()
 }
 
-function onTextInput(txt){
+function onRemoveLine(){
+    removeLine()
+    renderMeme()
+}
+
+function onTextInput(txt) {
     setLineTxt(txt)
     renderMeme()
 }
 
-function onSaveMeme(){
+function onSaveMeme() {
     saveMeme()
 }
 
@@ -173,33 +188,66 @@ function downloadCanvas(elLink) {
 
 }
 
-function measureTextWidth(lineIdx){
+function measureTextWidth(lineIdx) {
     return gCtx.measureText(gMeme.lines[lineIdx].txt).width
 }
 
-function onSetFontSize(sizeDiff){
+function onSetFontSize(sizeDiff) {
     setFontSize(sizeDiff)
     renderMeme()
 }
 
-function onSetColorStroke(color){
-    console.log('color',color)
+function onSetColorStroke(color) {
+    console.log('color', color)
     setColorStroke(color)
     renderMeme()
 }
 
-function onSetColorFill(color){
+function onSetColorFill(color) {
     setColorFill(color)
     renderMeme()
 }
 
-function setSelectedLine(line){
+function setSelectedLine(line) {
     console.log('line:', line)
     document.querySelector('#line-txt').value = line.txt
     document.querySelector('#colorStroke').value = line.colorStroke
     document.querySelector('#colorFill').value = line.colorFill
 
 }
+
+function onOpenGallery() {
+    gElSavedMemes.classList.remove('show')
+    gElEditor.classList.remove('show')
+    gElGallery.classList.add('show')
+}
+
+function onOpenSaved() {
+    gElSavedMemes.classList.add('show')
+    gElEditor.classList.remove('show')
+    gElGallery.classList.remove('show')
+
+    renderSavedMemes()
+}
+
+function renderSavedMemes(){
+    const savedMemes = getSavedMemes()
+    const elMemesCont = document.querySelector('.memes-container')
+    var strHTMLs = savedMemes.map((meme,idx)=>`
+        <img onclick="onEditMeme(${idx})" src='${meme.data}' alt="">`
+    )
+    elMemesCont.innerHTML = strHTMLs.join('')
+}
+
+function onEditMeme(idx){
+    gElSavedMemes.classList.remove('show')
+    gElEditor.classList.add('show')
+    gElGallery.classList.remove('show')
+    resizeCanvas()
+    editMeme(idx)
+    renderMeme()
+}
+
 
 
 

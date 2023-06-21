@@ -18,18 +18,28 @@ var gImgs = [
     { id: 15, url: 'img/15.jpg', keywords: ['movies', ''] },
     { id: 16, url: 'img/16.jpg', keywords: ['movies', 'funny'] },
     { id: 17, url: 'img/17.jpg', keywords: ['politics', 'cool'] },
-    { id: 18, url: 'img/18.jpg', keywords: ['movies', 'friends'] }
+    { id: 18, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
+    { id: 19, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
+    { id: 20, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
+    { id: 21, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
+    { id: 22, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
+    { id: 23, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
+    { id: 24, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
+    { id: 25, url: 'img/18.jpg', keywords: ['movies', 'friends'] }
 ]
 
 const STORAGE_KEY_MEMES = 'savedMemesDB'
 
-var gSavedMemes = []
-loadMemes()
+var gSavedMemes = _loadMemes()
 
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
     lines: []
+}
+
+function getSavedMemes(){
+    return gSavedMemes
 }
 
 var gIsDrag = false
@@ -43,6 +53,10 @@ function setMeme(imgId) {
 
 function getMeme() {
     return gMeme
+}
+
+function getImages(){
+    return gImgs
 }
 
 function setLineTxt(txt) {
@@ -60,13 +74,18 @@ function addLine(x, y) {
 
 }
 
-function loadMemes() {
+function removeLine(){
+    gMeme.lines.splice(gMeme.selectedLineIdx,1)
+}
+
+function _loadMemes() {
     let memes = loadFromStorage(STORAGE_KEY_MEMES)
     if (!memes) memes = []
-    gSavedMemes = memes
+    return memes
 }
 
 function saveMeme() {
+    gMeme.data = gElCanvas.toDataURL()
     gSavedMemes.push(gMeme)
     saveToStorage(STORAGE_KEY_MEMES, gSavedMemes)
 }
@@ -81,7 +100,8 @@ function _createLine(x, y) {
         font: 'impact',
         fontSize: 40,
         x,
-        y
+        y,
+        data:''
     }
 }
 
@@ -138,3 +158,6 @@ function setLineDrag(isDrag) {
     gMeme.lines[gMeme.selectedLineIdx].colorFill = color
   }
 
+  function editMeme(idx){
+    gMeme = gSavedMemes[idx]
+  }
