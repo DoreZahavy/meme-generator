@@ -38,7 +38,6 @@ function addListeners() {
         resizeCanvas()
         onOpenGallery()
     })
-    // gElCanvas.addEventListener('click',draw())
 }
 
 function addMouseListeners() {
@@ -55,18 +54,14 @@ function addTouchListeners() {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
-    console.log('hiii');
 
+    // checking what user clicked
     if (calcDistance(pos.x, pos.y, gRotatePos) < 10) {
         setRotateMode(true)
-        console.log('rotate');
     } else if (calcDistance(pos.x, pos.y, gResizePos) < 10) {
-        // gLastPos = gResizePos
         setResizeMode(true)
-        console.log('resize');
     } else if (findLineIdx(pos)) {
         setDragMode(true)
-        console.log('drag');
         gLastPos = pos
     } else deselect()
     document.body.style.cursor = 'grabbing'
@@ -75,19 +70,14 @@ function onDown(ev) {
 }
 
 function onMove(ev) {
-    const isRotate = getIsRotate()
-    const isResize = getIsResize()
-    const isDrag = getIsDrag()
     const pos = getEvPos(ev)
-
-    if (isRotate) {
-        // gCtx.save()
+    // Drag rotate or resize
+    if (getIsRotate()) {
         rotateLine(pos.x, pos.y)
-    } else if (isResize) {
+    } else if (getIsResize()) {
         resizeLine(pos.x, pos.y, gResizePos)
-        // gLastPos = pos
     }
-    else if (isDrag) {
+    else if (getIsDrag()) {
         const dx = pos.x - gLastPos.x
         const dy = pos.y - gLastPos.y
         moveLine(dx, dy)
@@ -114,11 +104,8 @@ function getEvPos(ev) {
     }
 
     if (TOUCH_EVS.includes(ev.type)) {
-        // Prevent triggering the mouse ev
         ev.preventDefault()
-        // Gets the first touch point
         ev = ev.changedTouches[0]
-        // Calc the right pos according to the touch screen
         pos = {
             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
             y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
@@ -128,7 +115,6 @@ function getEvPos(ev) {
 }
 
 function resizeCanvas() {
-    console.log('hi');
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight
@@ -147,10 +133,6 @@ function onOpenEditor(imgId) {
 
 function renderMeme() {
     const meme = getMeme()
-    // console.log('meme.lines:', meme.lines)
-
-    // console.log('meme:', meme)
-    // const img = document.querySelector(`.img${meme.selectedImgId}`)
     const img = new Image()
     img.src = `img/bgs/${meme.selectedImgId}.jpg`
     img.onload = () => {
@@ -163,65 +145,51 @@ function renderMeme() {
 
 function placeTxt(line, idx, selLineIdx) {
 
-    // const line = lines[selectedLineIdx]
-
     let height = gElCanvas.height / 2
-    // if(idx ===0)
     gCtx.lineWidth = line.outline
-    gCtx.strokeStyle = line.colלorStroke
+    gCtx.strokeStyle = line.colorStroke
     gCtx.fillStyle = line.colorFill
     gCtx.font = `${line.fontSize}px ${line.font}`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
-    // console.log('line.rotate:', line.rotate)
-
-
 
     gCtx.save()
-    gCtx.translate(line.x,line.y)
-    // gCtx.translate(gElCanvas.width/2,gElCanvas.height/2)
-    gCtx.rotate(line.rotate )
-    
-    
-    // gCtx.fillText(line.txt, line.x, line.y)
-    // gCtx.strokeText(line.txt, line.x, line.y)
+    gCtx.translate(line.x, line.y)
+    gCtx.rotate(line.rotate)
+
     gCtx.fillText(line.txt, 0, 0)
     gCtx.strokeText(line.txt, 0, 0)
-    
+
     if (selLineIdx === idx) markSelectedLine(line)
-    
+
     gCtx.restore()
-    // console.log('gCtx.measureText(line.txt):', gCtx.measureText(line.txt).width)
 }
 
 function markSelectedLine(line) {
     const width = gCtx.measureText(line.txt).width * 1.2
-    // console.log('width:', width)
     const lineHeight = line.fontSize * 1.2
     gCtx.strokeStyle = 'white'
     gCtx.lineWidth = 2
-    // gCtx.strokeRect(line.x - width / 2, line.y - lineHeight / 2, width, lineHeight)
-    gCtx.strokeRect( - width / 2,  - lineHeight / 2, width, lineHeight)
 
-    // gCtx.fillRect(line.x - width / 2 - 5, line.y - line.fontSize / 2 - 3, 7, -7)
-    gCtx.fillRect( - width / 2 - 5,  - line.fontSize / 2 - 3, 7, -7)
+    // Outline selected line
+    gCtx.strokeRect(- width / 2, - lineHeight / 2, width, lineHeight)
+    // Resize indicator
+    gCtx.fillRect(- width / 2 - 5, - line.fontSize / 2 - 3, 7, -7)
 
-    const angle = Math.atan2(-width/2,-line.fontSize/2)
-    const dist = calcDistance(width/2,line.fontSize/2,{x:0 , y:0})
-    
-    gResizePos = { x: line.x +dist*Math.sin(angle-line.rotate), y: line.y +dist*Math.cos(-angle+line.rotate) }
+    const angle = Math.atan2(-width / 2, -line.fontSize / 2)
+    const dist = calcDistance(width / 2, line.fontSize / 2, { x: 0, y: 0 })
+    // Saving resize indicator location
+    gResizePos = { x: line.x + dist * Math.sin(angle - line.rotate), y: line.y + dist * Math.cos(-angle + line.rotate) }
 
     gCtx.stroke()
     gCtx.beginPath()
-    // gCtx.arc(line.x, line.y - lineHeight * 0.65, 4, Math.PI, 2 * Math.PI)
+    // Rotate indicator
     gCtx.arc(0, - lineHeight * 0.8, 4, Math.PI, 2 * Math.PI)
     gCtx.stroke()
-    
-    // gRotatePos = { x: line.x, y: line.y - lineHeight * 0.65 }
-    gRotatePos = { x:line.x+ lineHeight*0.8*Math.sin(line.rotate), y: line.y- lineHeight*0.8*Math.cos(line.rotate) }
+
+    // Saving rotate indicator location
+    gRotatePos = { x: line.x + lineHeight * 0.8 * Math.sin(line.rotate), y: line.y - lineHeight * 0.8 * Math.cos(line.rotate) }
 }
-
-
 
 function onAddLine() {
     const width = gElCanvas.width / 2
@@ -244,11 +212,10 @@ function onTextInput(txt) {
 function onSaveMeme() {
     deselect()
     renderMeme()
-    setTimeout(saveMeme,1000)
+    setTimeout(saveMeme, 1000)
 }
 
 function downloadCanvas(elLink) {
-
     const data = gElCanvas.toDataURL()
 
     elLink.href = data
@@ -281,7 +248,6 @@ function onToggleOutline() {
 }
 
 function setSelectedLine(line) {
-    console.log('line:', line)
     document.querySelector('#line-txt').value = line.txt
     document.querySelector('#colorStroke').value = line.colorStroke
     document.querySelector('#colorFill').value = line.colorFill
@@ -320,36 +286,21 @@ function onEditMeme(idx) {
     renderMeme()
 }
 
-function onRemoveSavedMeme(idx){
+function onRemoveSavedMeme(idx) {
     removeSavedMeme(idx)
 
     renderSavedMemes()
 }
 
-
-
-function onSetFilter(category){
+function onSetFilter(category) {
     setFilter(category)
     renderImages()
 }
 
-function onCleanFilter(){
+function onCleanFilter() {
     document.querySelector(`#filter`).value = ''
     setFilter('')
     renderImages()
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

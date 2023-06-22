@@ -49,8 +49,9 @@ var gMode = {
 }
 
 var gFilter
-var gKeywordSearchCountMap = { 'funny': 0, 'cat': 0, 'baby': 0 }
 
+// not in use (yet)
+var gKeywordSearchCountMap = { 'funny': 0, 'cat': 0, 'baby': 0 }
 
 function setMeme(imgId) {
     gMeme.selectedImgId = imgId
@@ -61,25 +62,19 @@ function getMeme() {
 }
 
 function getImages() {
-   if(!gFilter) return gImgs
-   else return gImgs.filter(img => img.keywords.includes(gFilter))
-
-    // return gImgs
+    if (!gFilter) return gImgs
+    else return gImgs.filter(img => img.keywords.includes(gFilter))
 }
 
 function setLineTxt(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
-    console.log('txt:', txt)
-    console.log('gMeme.lines[gMeme.selectedLineIdx].txt:', gMeme.lines[gMeme.selectedLineIdx].txt)
 }
 
 function addLine(x, y) {
-    console.log('gMeme.lines.length:', gMeme.lines.length)
     if (gMeme.lines.length === 1) y = (y * 2) - 40
     gMeme.lines.push(_createLine(x, y))
 
     selectLine(gMeme.lines.length - 1)
-
 }
 
 function removeLine() {
@@ -89,7 +84,7 @@ function removeLine() {
 function _loadMemes() {
     let memes = loadFromStorage(STORAGE_KEY_MEMES)
     if (!memes || memes.length === 0) memes = []
-        return memes
+    return memes
 }
 
 function saveMeme() {
@@ -98,7 +93,7 @@ function saveMeme() {
     saveSavedMemes()
 }
 
-function saveSavedMemes(){
+function saveSavedMemes() {
     saveToStorage(STORAGE_KEY_MEMES, gSavedMemes)
 }
 
@@ -125,26 +120,25 @@ function findLineIdx({ x, y }) {
         return x >= line.x - txtWidth / 2 && x <= line.x + txtWidth / 2
             && y >= line.y - line.fontSize / 2 && y <= line.y + line.fontSize / 2
     })
-    // console.log('lineIdx:', lineIdx)
     if (lineIdx !== -1) {
         selectLine(lineIdx)
         return true
     }
-
 }
 
 function selectLine(lineIdx) {
     gMeme.selectedLineIdx = lineIdx
-    // console.log('lineIdx:', lineIdx)
     setSelectedLine(gMeme.lines[gMeme.selectedLineIdx])
 }
 
 function setDragMode(isDrag) {
     gMode.isDrag = isDrag
 }
+
 function setResizeMode(isResize) {
     gMode.isResize = isResize
 }
+
 function setRotateMode(isRotate) {
     gMode.isRotate = isRotate
 }
@@ -152,9 +146,11 @@ function setRotateMode(isRotate) {
 function getIsDrag() {
     return gMode.isDrag
 }
+
 function getIsResize() {
     return gMode.isResize
 }
+
 function getIsRotate() {
     return gMode.isRotate
 }
@@ -162,32 +158,28 @@ function getIsRotate() {
 function moveLine(dx, dy) {
     gMeme.lines[gMeme.selectedLineIdx].x += dx
     gMeme.lines[gMeme.selectedLineIdx].y += dy
-
 }
 
-function rotateLine(x,y){
+function rotateLine(x, y) {
     const line = gMeme.lines[gMeme.selectedLineIdx]
-line.rotate = Math.atan2(x-line.x,line.y-y,)
+    line.rotate = Math.atan2(x - line.x, line.y - y,)
 }
 
-function resizeLine(x,y,resizePos){
-const line = gMeme.lines[gMeme.selectedLineIdx]
-const dx = x-resizePos.x
-const dy = y-resizePos.y
+function resizeLine(x, y, resizePos) {
+    const line = gMeme.lines[gMeme.selectedLineIdx]
+    const dx = x - resizePos.x
+    const dy = y - resizePos.y
 
-const prevFSize = line.fontSize
+    const prevFSize = line.fontSize
+    // Measuring change in both axis and averaging
+    const yFSize = line.fontSize - dy
+    const xFSize = line.fontSize *( 1 - (2 * dx) / measureTextWidth(gMeme.selectedLineIdx))
 
-const yFSize =  line.fontSize -= dy
-const xFSize =  line.fontSize *=1-(2*dx)/measureTextWidth(gMeme.selectedLineIdx)
-console.log('dy:', dy)
-
-const newSize = (yFSize+xFSize)/2
-
-if(newSize>80) line.fontSize = 80
-else if (newSize<25) line.fontSize = 25
-else line.fontSize = newSize
-
-
+    const newSize = (yFSize + xFSize) / 2
+    // Limiting font size
+    if (newSize > 80) line.fontSize = 80
+    else if (newSize < 25) line.fontSize = 25
+    else line.fontSize = newSize
 }
 
 function getSelectedTxt() {
@@ -196,10 +188,8 @@ function getSelectedTxt() {
 
 function setFontSize(sizeDiff) {
     const line = gMeme.lines[gMeme.selectedLineIdx]
-    // line.fontSize = (line.fontSize>=80||)? line.fontSize:line.fontSize+sizeDiff
     line.fontSize += sizeDiff
     if (line.fontSize >= 80 || line.fontSize <= 20) line.fontSize -= sizeDiff
-
 }
 
 function setColorStroke(color) {
@@ -219,16 +209,15 @@ function editMeme(idx) {
     gMeme = gSavedMemes[idx]
 }
 
-function removeSavedMeme(idx){
-    gSavedMemes.splice(idx,1)
+function removeSavedMeme(idx) {
+    gSavedMemes.splice(idx, 1)
     saveSavedMemes()
 }
 
-function deselect(){
+function deselect() {
     gMeme.selectedLineIdx = -1
 }
 
-
-function setFilter(category){
+function setFilter(category) {
     gFilter = category
 }
