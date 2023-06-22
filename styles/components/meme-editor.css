@@ -1,3 +1,4 @@
+
 .meme-editor{
     display: none;
 }
@@ -5,3 +6,119 @@
 .meme-editor.show{
     display: block;
 }
+
+.canvas-container{
+    background-color: blanchedalmond;
+    height: 100%;
+    cursor: grab;
+    max-width: 900px;
+}
+
+.meme-canvas{
+    display: block;
+}
+
+.control-area{
+    position: relative;
+    height: 100%;
+    border: 5px solid var(--clr3);
+    border-radius: 1em;
+    padding: 15px;
+
+    background-color: var(--clr2);
+    margin-block-start: 20px;
+}
+
+
+
+.control-area .txt-btns>*{
+    border:2px solid var(--clr3) ;
+    background-color: var(--clr1);
+    border-radius:0.5em ;
+    width: 37px;
+    height: 37px;
+
+
+}
+.control-area .txt-btns>*:first-child img{
+ width: 20px;
+ height: 20px;
+
+
+}
+
+.control-area .clr-inputs input{
+    width: 35px;
+    height: 35px;
+    border: none;
+    border: 1px solid black;
+}
+
+.control-area .clr-inputs label{
+    width: 35px;
+    height: 85px;
+    /* border:2px solid var(--clr3) ;
+    background-color: var(--clr1); */
+}
+
+.control-area .url-btns{
+    margin-inline: auto;
+}
+
+.control-area .url-btns>*{
+    display: flex;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 0.5em;
+    margin-inline: 4px;
+}
+
+.control-area .fb-upload img{
+    width: 20px;
+    height: 20px;
+}
+.control-area .fb-upload{
+    background-color: gray;
+    cursor: pointer;
+    border-style: none;
+}
+.control-area .fb-upload:hover{
+    background-color: rgb(30, 48, 80);
+}
+
+.control-area img{
+    width: 25px;
+}
+
+.control-area .save-btn{
+    border:2px solid var(--clr3) ;
+    background-color: var(--clr1);
+    cursor: pointer;
+}
+.control-area .dl-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border:2px solid var(--clr3) ;
+    background-color: var(--clr1);
+}
+
+.control-area #line-txt{
+    position: relative;
+    border: 2px solid var(--clr3);
+    border-radius: 0.2em;
+    height: 2.5em;
+}
+
+.control-area #line-txt::after{
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background-color: var(--clr3);
+    top: 10px;
+    left: 5px;
+}
+
+

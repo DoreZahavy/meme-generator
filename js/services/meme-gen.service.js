@@ -171,13 +171,13 @@ function resizeLine(x, y, resizePos) {
     const dy = y - resizePos.y
 
     const prevFSize = line.fontSize
-    // Measuring change in both axis and averaging
+    // Measuring change in both axes and averaging
     const yFSize = line.fontSize - dy
     const xFSize = line.fontSize *( 1 - (2 * dx) / measureTextWidth(gMeme.selectedLineIdx))
-
     const newSize = (yFSize + xFSize) / 2
+
     // Limiting font size
-    if (newSize > 80) line.fontSize = 80
+    if (newSize > 100) line.fontSize = 100
     else if (newSize < 25) line.fontSize = 25
     else line.fontSize = newSize
 }
@@ -198,6 +198,10 @@ function setColorStroke(color) {
 
 function setColorFill(color) {
     gMeme.lines[gMeme.selectedLineIdx].colorFill = color
+}
+
+function setFont(font){
+    gMeme.lines[gMeme.selectedLineIdx].font = font
 }
 
 function toggleOutline() {

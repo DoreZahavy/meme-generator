@@ -306,3 +306,8 @@ function onCleanFilter() {
 function onToggleFonts(){
     document.querySelector('.fonts-container').classList.toggle("expanded")
 }
+
+function onSetFont(font){
+    setFont(font)
+    renderMeme()
+}

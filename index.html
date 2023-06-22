@@ -56,12 +56,19 @@
                 <div class="control-area flex column space-between">
                     <input type="text" oninput="onTextInput(this.value)" name="line-txt" id="line-txt">
                     
-                    <button onclick="onToggleFonts()">Fonts</button>
+                    <button class="font-btn" onclick="onToggleFonts()">Fonts</button>
                     <div class="fonts-container">
                         <ul class="fonts-list clean-list">
-                            <li>hey</li>
-                            <li>ho</li>
-                            <li>sup</li>
+                            <li onclick="onSetFont('impact1')">impact</li>
+                            <li onclick="onSetFont('eurofurence')">eurofurence</li>
+                            <li onclick="onSetFont('kablammo')">kablammo</li>
+                            <li onclick="onSetFont('inconsolata')">inconsolata</li>
+                            <li onclick="onSetFont('lato')">lato</li>
+                            <li onclick="onSetFont('playfair')">playfair</li>
+                            <li onclick="onSetFont('ubuntu')">ubuntu</li>
+                            <li onclick="onSetFont('belanosima')">belanosima</li>
+                            <li onclick="onSetFont('source')">source</li>
+                            <li onclick="onSetFont('dancing')">dancing</li>
                         </ul>
                     </div>
                     

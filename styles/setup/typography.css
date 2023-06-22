@@ -14,8 +14,8 @@
 }
 
 @font-face {
-    font-family: impacted;
-    src: url("/fonts/impacted/Impacted.ttf");
+    font-family: kablammo;
+    src: url("/fonts/kablammo/Kablammo.ttf");
 }
 
 @font-face {
@@ -31,4 +31,16 @@
 @font-face {
     font-family: ubuntu;
     src: url("/fonts/ubuntu/Ubuntu-Light.ttf");
+}
+@font-face {
+    font-family: belanosima;
+    src: url("/fonts/belanosima/Belanosima-Regular.ttf");
+}
+@font-face {
+    font-family: dancing;
+    src: url("/fonts/dancing/dancing.ttf");
+}
+@font-face {
+    font-family: source;
+    src: url("/fonts/source/SourceCodePro-VariableFont_wght.ttf");
 }
