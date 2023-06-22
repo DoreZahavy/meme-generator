@@ -57,4 +57,60 @@
     .saved-memes .memes-container{
         columns: 4;
     }
+
+    /* .editor-grid {
+        display: grid;
+        grid-template-columns: minmax(auto, 900px) minmax(450px auto);
+        column-gap: 20px;
+        margin-top: 10vh;
+    }
+    
+    .meme-editor .grid-container{
+        grid-row: 1;
+        grid-column: 1;
+    }
+    
+    .meme-editor .control-area{
+        grid-row: 1;
+        grid-column: 2;
+        height: auto;
+    } */
+    .editor-grid {
+        display: block;
+        position: relative;
+        margin: auto;
+        /* grid-template-columns: minmax(auto, 900px) minmax(450px auto); */
+        /* column-gap: 20px; */
+        margin-top: 15vh;
+        max-width: 900px;
+    }
+    
+    .meme-editor .grid-container{
+        /* grid-row: 1; */
+        /* grid-column: 1; */
+    }
+    
+    .meme-editor .control-area{
+        position: absolute;
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+        top: -62px;
+        width: 100%;
+        /* grid-row: 1; */
+        /* grid-column: 2; */
+        height: 60px;
+        padding: 0;
+    }
+
+    .meme-editor .control-area>*:first-child{
+        margin-inline-start: 20px;
+    }
+    .meme-editor .control-area>*:last-child{
+        margin-inline-end: 20px;
+    }
+
+    .control-area #line-txt{
+        height: 1.9em;
+    }
 }

@@ -13,7 +13,6 @@ var gRotatePos
 var gResizePos
 
 function onInit() {
-    console.log('init!');
     resizeCanvas()
     addListeners()
     gElGallery.classList.add('show')
@@ -36,7 +35,8 @@ function addListeners() {
     addTouchListeners()
     window.addEventListener('resize', () => {
         resizeCanvas()
-        onOpenGallery()
+        // onOpenGallery()
+        renderMeme()
     })
 }
 
@@ -303,4 +303,6 @@ function onCleanFilter() {
     renderImages()
 }
 
-
+function onToggleFonts(){
+    document.querySelector('.fonts-container').classList.toggle("expanded")
+}
