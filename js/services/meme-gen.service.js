@@ -38,11 +38,15 @@ var gMeme = {
     lines: []
 }
 
-function getSavedMemes(){
+function getSavedMemes() {
     return gSavedMemes
 }
 
-var gIsDrag = false
+var gMode = {
+    isRotate: false,
+    isDrag: false,
+    isResize: false
+}
 
 var gKeywordSearchCountMap = { 'funny': 0, 'cat': 0, 'baby': 0 }
 
@@ -55,7 +59,7 @@ function getMeme() {
     return gMeme
 }
 
-function getImages(){
+function getImages() {
     return gImgs
 }
 
@@ -70,12 +74,12 @@ function addLine(x, y) {
     if (gMeme.lines.length === 1) y = (y * 2) - 40
     gMeme.lines.push(_createLine(x, y))
 
-    selectLine( gMeme.lines.length - 1)
+    selectLine(gMeme.lines.length - 1)
 
 }
 
-function removeLine(){
-    gMeme.lines.splice(gMeme.selectedLineIdx,1)
+function removeLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
 }
 
 function _loadMemes() {
@@ -94,70 +98,117 @@ function _createLine(x, y) {
 
     return {
         txt: 'text here',
-        // size: 20,
         colorFill: '#fefefe',
         colorStroke: '#010101',
         font: 'impact',
         fontSize: 40,
+        outline: 2,
+        rotate: 0,
         x,
         y,
-        data:''
+        data: ''
     }
 }
 
 function findLineIdx({ x, y }) {
-    
-    const lineIdx = gMeme.lines.findIndex((line,lineIdx) => {
+
+    const lineIdx = gMeme.lines.findIndex((line, lineIdx) => {
         const txtWidth = measureTextWidth(lineIdx)
-        return x >= line.x-txtWidth/2 && x <= line.x + txtWidth/2
-          && y >= line.y-line.fontSize/2 && y <= line.y + line.fontSize/2
+        return x >= line.x - txtWidth / 2 && x <= line.x + txtWidth / 2
+            && y >= line.y - line.fontSize / 2 && y <= line.y + line.fontSize / 2
     })
-    
-    selectLine(lineIdx)
-    // setTxtInput(gMeme.lines[gMeme.selectedLineIdx].txt)
+    // console.log('lineIdx:', lineIdx)
+    if (lineIdx !== -1) {
+        selectLine(lineIdx)
+        return true
+    }
+
 }
 
-function selectLine(lineIdx){
+function selectLine(lineIdx) {
     gMeme.selectedLineIdx = lineIdx
-    console.log('lineIdx:', lineIdx)
-    setSelectedLine( gMeme.lines[gMeme.selectedLineIdx])
+    // console.log('lineIdx:', lineIdx)
+    setSelectedLine(gMeme.lines[gMeme.selectedLineIdx])
 }
 
-function setLineDrag(isDrag) {
-    gIsDrag = isDrag
-  }
+function setDragMode(isDrag) {
+    gMode.isDrag = isDrag
+}
+function setResizeMode(isResize) {
+    gMode.isResize = isResize
+}
+function setRotateMode(isRotate) {
+    gMode.isRotate = isRotate
+}
 
-  function getIsDrag(){
-    return gIsDrag
-  }
+function getIsDrag() {
+    return gMode.isDrag
+}
+function getIsResize() {
+    return gMode.isResize
+}
+function getIsRotate() {
+    return gMode.isRotate
+}
 
-  function moveLine(dx, dy) {
+function moveLine(dx, dy) {
     gMeme.lines[gMeme.selectedLineIdx].x += dx
     gMeme.lines[gMeme.selectedLineIdx].y += dy
-  
-  }
 
-  function getSelectedTxt(){
+}
+
+function rotateLine(x,y){
+    const line = gMeme.lines[gMeme.selectedLineIdx]
+line.rotate = Math.atan2(x-line.x,line.y-y,)
+}
+
+function resizeLine(x,y,resizePos){
+const line = gMeme.lines[gMeme.selectedLineIdx]
+const dx = x-resizePos.x
+const dy = y-resizePos.y
+
+const prevFSize = line.fontSize
+
+const yFSize =  line.fontSize -= dy
+const xFSize =  line.fontSize *=1-(2*dx)/measureTextWidth(gMeme.selectedLineIdx)
+console.log('dy:', dy)
+
+const newSize = (yFSize+xFSize)/2
+
+if(newSize>80) line.fontSize = 80
+else if (newSize<25) line.fontSize = 25
+else line.fontSize = newSize
+
+
+}
+
+function getSelectedTxt() {
     return gMeme.lines[gMeme.selectedLineIdx].txt
-  }
+}
 
-  function setFontSize(sizeDiff){
+function setFontSize(sizeDiff) {
     const line = gMeme.lines[gMeme.selectedLineIdx]
     // line.fontSize = (line.fontSize>=80||)? line.fontSize:line.fontSize+sizeDiff
-    line.fontSize+=sizeDiff
-    if(line.fontSize>=80||line.fontSize<=20) line.fontSize-=sizeDiff
+    line.fontSize += sizeDiff
+    if (line.fontSize >= 80 || line.fontSize <= 20) line.fontSize -= sizeDiff
 
-  }
+}
 
-  function setColorStroke(color){
-    console.log('color:', color)
+function setColorStroke(color) {
     gMeme.lines[gMeme.selectedLineIdx].colorStroke = color
-  }
+}
 
-  function  setColorFill(color){
+function setColorFill(color) {
     gMeme.lines[gMeme.selectedLineIdx].colorFill = color
-  }
+}
 
-  function editMeme(idx){
+function toggleOutline() {
+    const line = gMeme.lines[gMeme.selectedLineIdx]
+    line.outline = (line.outline === 1) ? 2 : 1
+}
+
+function editMeme(idx) {
     gMeme = gSavedMemes[idx]
-  }
+}
+
+

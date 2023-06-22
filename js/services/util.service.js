@@ -62,3 +62,9 @@ function shuffle(items) {
 function deepCopy(obj){
     return JSON.parse(JSON.stringify(obj))
 }
+
+function calcDistance(x, y, pos) {
+    var dist = Math.sqrt(Math.pow(x - pos.x, 2) + Math.pow(y - pos.y, 2))
+    // console.log('dist:', dist)
+    return dist
+}

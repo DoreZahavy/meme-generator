@@ -33,23 +33,37 @@
                 <div class="canvas-container">
                     <canvas class="meme-canvas"></canvas>
                 </div>
-                <div class="control-area">
+                <div class="control-area flex column space-between">
                     <input type="text" oninput="onTextInput(this.value)" name="line-txt" id="line-txt">
-                    <button onclick="onAddLine()"><img src="img/icons/add.png" alt="" srcset=""></button>
-                    <button onclick="onRemoveLine()"><img src="img/icons/delete.png" alt=""></button>
-                    <button onclick="onSetFontSize(5)"><img src="img/icons/big-font.png" alt="" srcset=""></button>
-                    <button onclick="onSetFontSize(-5)"><img src="img/icons/small-font.png" alt=""></button>
-                    <label for="colorStroke"><img src="img/icons/stroke.png" alt="" srcset=""></label>
-                    <input type="color" oninput="onSetColorStroke(this.value)" name="colorStroke" id="colorStroke"
-                        value="#010101">
-                    <label for="colorFill"><img src="img/icons/fill.png" alt=""></label>
-                    <input type="color" oninput="onSetColorFill(this.value)" name="colorFill" id="colorFill"
-                        value="#ffffff">
-                    <!-- <input type="color" name="colorFill" id="colorFill" value1="#fefefe"> -->
-                    <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
-                    <button onclick="onSaveMeme()">Save</button>
-                    <button class="fb-upload flex-center" onclick="onUploadImg()"><img src="img/icons/facebook.png"
+                    <div class="txt-btns flex space space-evenly">
+                        <button onclick="onAddLine()"><img src="img/icons/add.png" alt="" srcset=""></button>
+                        <button onclick="onRemoveLine()"><img src="img/icons/delete.png" alt=""></button>
+                        <button onclick="onSetFontSize(5)"><img src="img/icons/big-font.png" alt="" srcset=""></button>
+                        <button onclick="onSetFontSize(-5)"><img src="img/icons/small-font.png" alt=""></button>
+                        <button onclick="onToggleOutline()"><img src="img/icons/outline.png" alt=""></button>
+                    </div>
+                    <div class="clr-inputs flex space-evenly">
+                        <div>
+                            
+                            <label for="colorStroke"><img src="img/icons/stroke.png" alt="" srcset=""></label>
+                            <input type="color" oninput="onSetColorStroke(this.value)" name="colorStroke" id="colorStroke"
+                            value="#ffffff">
+                        </div>
+                        <div>
+
+                            <label for="colorFill"><img src="img/icons/fill.png" alt=""></label>
+                            <input type="color" oninput="onSetColorFill(this.value)" name="colorFill" id="colorFill"
+                            value="#f4a87e">
+                        </div>
+                    </div>
+                    <div class="url-btns flex space-between">
+
+                        <!-- <input type="color" name="colorFill" id="colorFill" value1="#fefefe"> -->
+                        <button class="save-btn" onclick="onSaveMeme()">Save</button>
+                        <button class="fb-upload flex-center" onclick="onUploadImg()"><img src="img/icons/facebook.png"
                             alt=""></button>
+                            <a class="dl-link" href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
+                        </div>
                 </div>
             </div>
         </section>

@@ -1,6 +1,9 @@
 .control-area{
     height: 100%;
     outline: 1px solid black;
+    padding: 10px;
+
+
 }
 
 .control-area .fb-upload img{
@@ -8,14 +11,30 @@
     height: 20px;
 }
 .control-area .fb-upload{
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-color: lightgray;
+    cursor: pointer;
 }
 .control-area .fb-upload:hover{
     background-color: rgb(30, 48, 80);
 }
 
 .control-area img{
-    width: 15px;
+    width: 25px;
+}
+
+.control-area .save-btn{
+    border:1px solid black ;
+    cursor: pointer;
+    height: 40px;
+    width: 80px;
+}
+.control-area .dl-link{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 80px;
+    text-decoration: none;
+    border:1px solid black ;
 }
