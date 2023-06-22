@@ -1,6 +1,7 @@
 .main-header{
-    background-color: antiquewhite;
-  
+    background-color: var(--clr4);
+  color: var(--clr1);
+  box-shadow: 0 0 0 5px var(--clr3);
 }
 
 /* .main-header .nav-container .nav{
@@ -15,4 +16,11 @@
     height: 80px;
     width: 80px;
     cursor: pointer;
+    border-inline-start: 1px solid var(--clr3);
+    
+}
+.main-header .logo{
+    font-family: eurofurence;
+    /* font-size: 28px; */
+    margin-inline-start: 20px;
 }

@@ -11,7 +11,7 @@
 <body onload="onInit()">
     <main class="main-layout">
 
-        <Header class="main-header full main-layout">
+        <Header class="main-header full">
             <nav class="nav-container flex-center space-between">
                 <h2 class="logo">memegen</h2>
                 <ul class="nav flex align-center justify-center clean-list">
@@ -37,10 +37,10 @@
                     <input type="text" oninput="onTextInput(this.value)" name="line-txt" id="line-txt">
                     <div class="txt-btns flex space space-evenly">
                         <button onclick="onAddLine()"><img src="img/icons/add.png" alt="" srcset=""></button>
-                        <button onclick="onRemoveLine()"><img src="img/icons/delete.png" alt=""></button>
                         <button onclick="onSetFontSize(5)"><img src="img/icons/big-font.png" alt="" srcset=""></button>
                         <button onclick="onSetFontSize(-5)"><img src="img/icons/small-font.png" alt=""></button>
                         <button onclick="onToggleOutline()"><img src="img/icons/outline.png" alt=""></button>
+                        <button onclick="onRemoveLine()"><img src="img/icons/delete.png" alt=""></button>
                     </div>
                     <div class="clr-inputs flex space-evenly">
                         <div>
@@ -51,18 +51,18 @@
                         </div>
                         <div>
 
-                            <label for="colorFill"><img src="img/icons/fill.png" alt=""></label>
                             <input type="color" oninput="onSetColorFill(this.value)" name="colorFill" id="colorFill"
                             value="#f4a87e">
+                            <label for="colorFill"><img src="img/icons/fill.png" alt=""></label>
                         </div>
                     </div>
-                    <div class="url-btns flex space-between">
+                    <div class="url-btns flex">
 
                         <!-- <input type="color" name="colorFill" id="colorFill" value1="#fefefe"> -->
-                        <button class="save-btn" onclick="onSaveMeme()">Save</button>
+                        <button class="save-btn" onclick="onSaveMeme()"><img src="img/icons/save.png" alt="" srcset=""></button>
                         <button class="fb-upload flex-center" onclick="onUploadImg()"><img src="img/icons/facebook.png"
                             alt=""></button>
-                            <a class="dl-link" href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
+                            <a class="dl-link" href="#" onclick="downloadCanvas(this)" download="file-name"><img src="img/icons/download.png" alt="" srcset=""></a>
                         </div>
                 </div>
             </div>
@@ -76,7 +76,6 @@
 
         <footer class="main-footer"></footer>
     </main>
-
 
     <script src="js/services/util.service.js"></script>
     <script src="js/services/storage.service.js"></script>

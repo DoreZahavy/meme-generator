@@ -1,14 +1,15 @@
-.saved-memes{
+.saved-memes {
     display: none;
     /* border: 2px solid black; */
     /* height: 1000px; */
 }
-.saved-memes.show{
+
+.saved-memes.show {
     display: block;
 }
 
 
-.saved-memes .memes-container{
+.saved-memes .memes-container {
 
     columns: 1;
 
@@ -16,11 +17,31 @@
     padding: 5vh;
     column-gap: 15px;
 
-  
+
 }
 
-.saved-memes .memes-container img{
-width: 100%;
-cursor: pointer;
-margin-block-end: 15px;
+.saved-memes .memes-container img {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    margin-block-end: 15px;
+}
+
+.saved-memes .memes-container button {
+    display: inline-flex;
+    justify-content: center;
+    position: absolute;
+    translate: -30px 5px;
+    width: 25px;
+    height: 25px;
+
+    border: 2px solid var(--clr3);
+    background-color: var(--clr1);
+    border-radius: 0.3em;
+
+}
+
+.saved-memes .memes-container button img {
+    width: 20px;
+    height: 20px;
 }

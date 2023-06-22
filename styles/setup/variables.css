@@ -1,9 +1,14 @@
 :root {
     /* pallete */
-    --clrPrimary2: #f0f0f0;
-    --clrPrimary1: #b4ad9e;
-    --clrPrimarybase: #626262;
-    --clrPrimary-1: #000;
+    --clr1: #FFC600;
+    --clr2: #26006d;
+    --clr3: #B31312;
+    --clr4: #000000;
+    /* --clr1: #EEE2DE;
+    --clr2: #272563;
+    --clr3: #B31312;
+    --clr4: #19155f; */
+    /* --clr2: #845eca; */
 
   
 

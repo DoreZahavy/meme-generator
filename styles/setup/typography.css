@@ -1,34 +1,34 @@
 @font-face {
-    font-family: inconsolata, sans-serif;
+    font-family: inconsolata;
     src: url("/fonts/inconsolata/Inconsolata-Regular.ttf");
 }
 
 @font-face {
-    font-family: eurofurence, sans-serif;
+    font-family: eurofurence;
     src: url("/fonts/eurofurence/eurofurence-regular.ttf");
 }
 
 @font-face {
-    font-family: impact1, sans-serif;
+    font-family: impact1;
     src: url("/fonts/impact/impact.ttf");
 }
 
 @font-face {
-    font-family: impacted, sans-serif;
+    font-family: impacted;
     src: url("/fonts/impacted/Impacted.ttf");
 }
 
 @font-face {
-    font-family: lato, sans-serif;
+    font-family: lato;
     src: url("/fonts/lato/Lato-Regular.ttf");
 }
 
 @font-face {
-    font-family: playfair, serif;
+    font-family: playfair;
     src: url("/fonts/playfair/PlayfairDisplay-Regular.ttf");
 }
 
 @font-face {
-    font-family: ubuntu, sans-serif;
+    font-family: ubuntu;
     src: url("/fonts/ubuntu/Ubuntu-Light.ttf");
 }

@@ -5,13 +5,15 @@
 
 /* tags */
 html {
-    /* color: var(--clrPrimarybase);
-    font-family: playfair, serif;
-    */
+    /* color: var(--clrPrimarybase); */
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    /* letter-spacing: 0.12em; */
+   
 }
 
 body {
     margin: 0;
+    background-color: var(--clr1);
 }
 
 

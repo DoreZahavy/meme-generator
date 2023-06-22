@@ -84,13 +84,17 @@ function removeLine() {
 
 function _loadMemes() {
     let memes = loadFromStorage(STORAGE_KEY_MEMES)
-    if (!memes) memes = []
-    return memes
+    if (!memes || memes.length === 0) memes = []
+        return memes
 }
 
 function saveMeme() {
     gMeme.data = gElCanvas.toDataURL()
-    gSavedMemes.push(gMeme)
+    gSavedMemes.unshift(gMeme)
+    saveSavedMemes()
+}
+
+function saveSavedMemes(){
     saveToStorage(STORAGE_KEY_MEMES, gSavedMemes)
 }
 
@@ -100,7 +104,7 @@ function _createLine(x, y) {
         txt: 'text here',
         colorFill: '#fefefe',
         colorStroke: '#010101',
-        font: 'impact',
+        font: 'impact1',
         fontSize: 40,
         outline: 2,
         rotate: 0,
@@ -209,6 +213,15 @@ function toggleOutline() {
 
 function editMeme(idx) {
     gMeme = gSavedMemes[idx]
+}
+
+function removeSavedMeme(idx){
+    gSavedMemes.splice(idx,1)
+    saveSavedMemes()
+}
+
+function deselect(){
+    gMeme.selectedLineIdx = -1
 }
 
 

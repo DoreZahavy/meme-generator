@@ -66,7 +66,7 @@ function onDown(ev) {
         setDragMode(true)
         console.log('drag');
         gLastPos = pos
-    }
+    } else deselect()
     document.body.style.cursor = 'grabbing'
     renderMeme()
 
@@ -164,7 +164,7 @@ function placeTxt(line, idx, selLineIdx) {
     let height = gElCanvas.height / 2
     // if(idx ===0)
     gCtx.lineWidth = line.outline
-    gCtx.strokeStyle = line.colorStroke
+    gCtx.strokeStyle = line.colלorStroke
     gCtx.fillStyle = line.colorFill
     gCtx.font = `${line.fontSize}px ${line.font}`
     gCtx.textAlign = 'center'
@@ -207,7 +207,7 @@ function markSelectedLine(line) {
     const dist = calcDistance(width/2,line.fontSize/2,{x:0 , y:0})
     console.log('dist:', dist)
 
-    gCtx.arc(dist*Math.sin((angle)),   +dist*Math.cos((-angle)), 15, 0, 2 * Math.PI)
+    // gCtx.arc(dist*Math.sin((angle)),   +dist*Math.cos((-angle)), 15, 0, 2 * Math.PI)
     // gResizePos = { x: line.x - (width / 2)*Math.sin(line.rotate-angle), y: line.y - (line.fontSize / 2)*Math.cos(line.rotate-angle) }
     
     gResizePos = { x: line.x +dist*Math.sin(angle-line.rotate), y: line.y +dist*Math.cos(-angle+line.rotate) }
@@ -243,7 +243,9 @@ function onTextInput(txt) {
 }
 
 function onSaveMeme() {
-    saveMeme()
+    deselect()
+    renderMeme()
+    setTimeout(saveMeme,1000)
 }
 
 function downloadCanvas(elLink) {
@@ -306,7 +308,7 @@ function renderSavedMemes() {
     const savedMemes = getSavedMemes()
     const elMemesCont = document.querySelector('.memes-container')
     var strHTMLs = savedMemes.map((meme, idx) => `
-        <img onclick="onEditMeme(${idx})" src='${meme.data}' alt="">`
+    <div><img onclick="onEditMeme(${idx})" src='${meme.data}' alt=""><button onclick="onRemoveSavedMeme(${idx})"><img src="img/icons/delete.png" alt=""></button></div>`
     )
     elMemesCont.innerHTML = strHTMLs.join('')
 }
@@ -318,6 +320,12 @@ function onEditMeme(idx) {
     resizeCanvas()
     editMeme(idx)
     renderMeme()
+}
+
+function onRemoveSavedMeme(idx){
+    removeSavedMeme(idx)
+
+    renderSavedMemes()
 }
 
 
