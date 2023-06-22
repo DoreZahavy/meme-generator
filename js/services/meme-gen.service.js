@@ -2,30 +2,30 @@
 
 var gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: ['politics', ''] },
-    { id: 2, url: 'img/2.jpg', keywords: ['friends', 'animals'] },
-    { id: 3, url: 'img/3.jpg', keywords: ['friends', 'animals'] },
-    { id: 4, url: 'img/4.jpg', keywords: ['animals', 'cats'] },
-    { id: 5, url: 'img/5.jpg', keywords: ['kids', 'cat'] },
-    { id: 6, url: 'img/6.jpg', keywords: ['science', 'crazy'] },
+    { id: 2, url: 'img/2.jpg', keywords: ['friendship', 'animals'] },
+    { id: 3, url: 'img/3.jpg', keywords: ['friendship', 'animals'] },
+    { id: 4, url: 'img/4.jpg', keywords: ['animals', ''] },
+    { id: 5, url: 'img/5.jpg', keywords: ['kids', ''] },
+    { id: 6, url: 'img/6.jpg', keywords: ['crazy', ''] },
     { id: 7, url: 'img/7.jpg', keywords: ['kids', ''] },
-    { id: 8, url: 'img/8.jpg', keywords: ['movie', ''] },
+    { id: 8, url: 'img/8.jpg', keywords: ['movies', 'cool'] },
     { id: 9, url: 'img/9.jpg', keywords: ['kids', 'funny'] },
     { id: 10, url: 'img/10.jpg', keywords: ['politics', 'funny'] },
-    { id: 11, url: 'img/11.jpg', keywords: ['', 'friends'] },
+    { id: 11, url: 'img/11.jpg', keywords: ['party', 'friendship'] },
     { id: 12, url: 'img/12.jpg', keywords: ['', ''] },
     { id: 13, url: 'img/13.jpg', keywords: ['movies', 'cool'] },
     { id: 14, url: 'img/14.jpg', keywords: ['movies', 'cool'] },
     { id: 15, url: 'img/15.jpg', keywords: ['movies', ''] },
     { id: 16, url: 'img/16.jpg', keywords: ['movies', 'funny'] },
-    { id: 17, url: 'img/17.jpg', keywords: ['politics', 'cool'] },
-    { id: 18, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
-    { id: 19, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
-    { id: 20, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
-    { id: 21, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
-    { id: 22, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
-    { id: 23, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
-    { id: 24, url: 'img/18.jpg', keywords: ['movies', 'friends'] },
-    { id: 25, url: 'img/18.jpg', keywords: ['movies', 'friends'] }
+    { id: 17, url: 'img/17.jpg', keywords: ['politics', 'evil'] },
+    { id: 18, url: 'img/18.jpg', keywords: ['movies', 'friendship'] },
+    { id: 19, url: 'img/18.jpg', keywords: ['', ''] },
+    { id: 20, url: 'img/18.jpg', keywords: ['movies', 'party'] },
+    { id: 21, url: 'img/18.jpg', keywords: ['movies', 'evil'] },
+    { id: 22, url: 'img/18.jpg', keywords: ['friendship', 'party'] },
+    { id: 23, url: 'img/18.jpg', keywords: ['politics', 'cool'] },
+    { id: 24, url: 'img/18.jpg', keywords: ['animals', ''] },
+    { id: 25, url: 'img/18.jpg', keywords: ['party', ''] }
 ]
 
 const STORAGE_KEY_MEMES = 'savedMemesDB'
@@ -48,6 +48,7 @@ var gMode = {
     isResize: false
 }
 
+var gFilter
 var gKeywordSearchCountMap = { 'funny': 0, 'cat': 0, 'baby': 0 }
 
 
@@ -60,7 +61,10 @@ function getMeme() {
 }
 
 function getImages() {
-    return gImgs
+   if(!gFilter) return gImgs
+   else return gImgs.filter(img => img.keywords.includes(gFilter))
+
+    // return gImgs
 }
 
 function setLineTxt(txt) {
@@ -225,3 +229,6 @@ function deselect(){
 }
 
 
+function setFilter(category){
+    gFilter = category
+}

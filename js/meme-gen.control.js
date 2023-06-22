@@ -17,6 +17,8 @@ function onInit() {
     resizeCanvas()
     addListeners()
     gElGallery.classList.add('show')
+
+    onCleanFilter()
     renderImages()
 
 }
@@ -100,6 +102,7 @@ function onUp() {
     setResizeMode(false)
     setRotateMode(false)
 
+
     document.body.style.cursor = 'grab'
 }
 
@@ -136,6 +139,7 @@ function onOpenEditor(imgId) {
     gElEditor.classList.add('show')
     gElSavedMemes.classList.remove('show')
     resizeCanvas()
+    document.querySelector('#line-txt').focus()
     setMeme(imgId)
     if (getMeme().lines.length === 0) addLine(gElCanvas.width / 2, 40)
     renderMeme()
@@ -203,15 +207,9 @@ function markSelectedLine(line) {
     gCtx.fillRect( - width / 2 - 5,  - line.fontSize / 2 - 3, 7, -7)
 
     const angle = Math.atan2(-width/2,-line.fontSize/2)
-    console.log('angle:', angle)
     const dist = calcDistance(width/2,line.fontSize/2,{x:0 , y:0})
-    console.log('dist:', dist)
-
-    // gCtx.arc(dist*Math.sin((angle)),   +dist*Math.cos((-angle)), 15, 0, 2 * Math.PI)
-    // gResizePos = { x: line.x - (width / 2)*Math.sin(line.rotate-angle), y: line.y - (line.fontSize / 2)*Math.cos(line.rotate-angle) }
     
     gResizePos = { x: line.x +dist*Math.sin(angle-line.rotate), y: line.y +dist*Math.cos(-angle+line.rotate) }
-    console.log('gResizePos:', gResizePos)
 
     gCtx.stroke()
     gCtx.beginPath()
@@ -229,6 +227,7 @@ function onAddLine() {
     const width = gElCanvas.width / 2
     const height = gElCanvas.height / 2
     addLine(width, height)
+    document.querySelector('#line-txt').focus()
     renderMeme()
 }
 
@@ -267,7 +266,6 @@ function onSetFontSize(sizeDiff) {
 }
 
 function onSetColorStroke(color) {
-    console.log('color', color)
     setColorStroke(color)
     renderMeme()
 }
@@ -330,7 +328,16 @@ function onRemoveSavedMeme(idx){
 
 
 
+function onSetFilter(category){
+    setFilter(category)
+    renderImages()
+}
 
+function onCleanFilter(){
+    document.querySelector(`#filter`).value = ''
+    setFilter('')
+    renderImages()
+}
 
 
 

@@ -8,13 +8,35 @@
 }
 
 
+.image-gallery .filter-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--clr3);
+    border: 1px solid var(--clr3);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-inline-start: 3px;
+}
+.image-gallery .filter-btn img{
+    width: 18px;
+}
+
+.image-gallery [name="filter"]{
+    margin-inline-start: 40px;
+    border: 1px solid var(--clr3);
+
+}
+
 .image-gallery .grid-container{
     
 
     columns: 1;
 
     place-items: center;
-    padding: 5vh;
+    padding-inline: 40px;
+    margin-block-start: 25px;
     column-gap: 15px;
 
   

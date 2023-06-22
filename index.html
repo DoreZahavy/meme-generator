@@ -22,7 +22,27 @@
         </Header>
 
         <section class="image-gallery">
-            <h1>Choose meme pic</h1>
+            <header class="gallery-header">
+                <h1>Choose Starting Image</h1>
+                <div class="filter-area flex align-center">
+
+                    <input oninput="onSetFilter(this.value)" type="text" name="filter" id="filter" list="categories"
+                        placeholder="-search by category-">
+                    <datalist id="categories">
+                        <option value="animals">
+                        <option value="politics">
+                        <option value="friendship">
+                        <option value="kids">
+                        <option value="movies">
+                        <option value="cool">
+                        <option value="funny">
+                        <option value="Party">
+                        <option value="Crazy">
+                        <option value="Evil">
+                    </datalist>
+                    <button class="filter-btn" onclick="onCleanFilter()"><img src="img/icons/clean.png" alt=""></button>
+                </div>
+            </header>
             <div class="grid-container">
             </div>
         </section>
@@ -44,26 +64,28 @@
                     </div>
                     <div class="clr-inputs flex space-evenly">
                         <div>
-                            
+
                             <label for="colorStroke"><img src="img/icons/stroke.png" alt="" srcset=""></label>
-                            <input type="color" oninput="onSetColorStroke(this.value)" name="colorStroke" id="colorStroke"
-                            value="#ffffff">
+                            <input type="color" oninput="onSetColorStroke(this.value)" name="colorStroke"
+                                id="colorStroke" value="#ffffff">
                         </div>
                         <div>
 
-                            <input type="color" oninput="onSetColorFill(this.value)" name="colorFill" id="colorFill"
-                            value="#f4a87e">
                             <label for="colorFill"><img src="img/icons/fill.png" alt=""></label>
+                            <input type="color" oninput="onSetColorFill(this.value)" name="colorFill" id="colorFill"
+                                value="#f4a87e">
                         </div>
                     </div>
                     <div class="url-btns flex">
 
                         <!-- <input type="color" name="colorFill" id="colorFill" value1="#fefefe"> -->
-                        <button class="save-btn" onclick="onSaveMeme()"><img src="img/icons/save.png" alt="" srcset=""></button>
+                        <button class="save-btn" onclick="onSaveMeme()"><img src="img/icons/save.png" alt=""
+                                srcset=""></button>
                         <button class="fb-upload flex-center" onclick="onUploadImg()"><img src="img/icons/facebook.png"
-                            alt=""></button>
-                            <a class="dl-link" href="#" onclick="downloadCanvas(this)" download="file-name"><img src="img/icons/download.png" alt="" srcset=""></a>
-                        </div>
+                                alt=""></button>
+                        <a class="dl-link" href="#" onclick="downloadCanvas(this)" download="file-name"><img
+                                src="img/icons/download.png" alt="" srcset=""></a>
+                    </div>
                 </div>
             </div>
         </section>

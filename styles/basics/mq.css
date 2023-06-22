@@ -8,6 +8,10 @@
 
 /* SMALL */
 @media (min-width: 640px) {
+
+    .control-area{
+        margin-block-start: 0px;
+    }
     
     .image-gallery .grid-container ,
     .saved-memes .memes-container{
