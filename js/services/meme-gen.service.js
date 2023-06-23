@@ -201,7 +201,7 @@ function setColorFill(color) {
 }
 
 function setFont(font){
-    gMeme.lines[gMeme.selectedLineIdx].font = font
+    gMeme.lines[gMeme.selectedLineIdx].font = font.toLowerCase()
 }
 
 function toggleOutline() {

@@ -74,11 +74,11 @@
                     
                     
                     <div class="txt-btns flex space space-evenly">
-                        <button onclick="onAddLine()"><img src="img/icons/add.png" alt="" srcset=""></button>
+                        <button onclick="onAddLine()" title="Add Line"><img src="img/icons/add.png" alt="" srcset=""></button>
                         <button onclick="onSetFontSize(5)"><img src="img/icons/big-font.png" alt="" srcset=""></button>
                         <button onclick="onSetFontSize(-5)"><img src="img/icons/small-font.png" alt=""></button>
                         <button onclick="onToggleOutline()"><img src="img/icons/outline.png" alt=""></button>
-                        <button onclick="onRemoveLine()"><img src="img/icons/delete.png" alt=""></button>
+                        <button onclick="onRemoveLine()" title="Delete Line"><img src="img/icons/delete.png" alt=""></button>
                     </div>
                     <div class="clr-inputs flex space-evenly">
                         <div>
@@ -97,12 +97,12 @@
                     <div class="url-btns flex">
 
                         <!-- <input type="color" name="colorFill" id="colorFill" value1="#fefefe"> -->
-                        <button class="save-btn" onclick="onSaveMeme()"><img src="img/icons/save.png" alt=""
+                        <button class="save-btn" title="Save Meme" onclick="onSaveMeme()"><img src="img/icons/save.png" alt=""
                                 srcset=""></button>
-                        <button class="fb-upload flex-center" onclick="onUploadImg()"><img src="img/icons/facebook.png"
+                        <button class="fb-upload flex-center" title="Share on Facebook" onclick="onUploadImg()"><img src="img/icons/facebook.png"
                                 alt=""></button>
-                        <a class="dl-link" href="#" onclick="downloadCanvas(this)" download="file-name"><img
-                                src="img/icons/download.png" alt="" srcset=""></a>
+                        <button class="dl-link" title="Download" onclick="onDownloadCanvas()" ><img
+                                src="img/icons/download.png" alt="" srcset=""></button>
                     </div>
                 </div>
             </div>

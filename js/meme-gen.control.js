@@ -215,12 +215,21 @@ function onSaveMeme() {
     setTimeout(saveMeme, 1000)
 }
 
-function downloadCanvas(elLink) {
+function onDownloadCanvas() {
+    deselect()
+    renderMeme()
+
+    setTimeout(downloadCanvas,1000)
+}
+
+function downloadCanvas(){
     const data = gElCanvas.toDataURL()
-
-    elLink.href = data
-    elLink.download = 'my-meme'
-
+    const anchor = document.createElement('a')
+    anchor.href = data
+    anchor.download = 'my-meme'
+    document.body.appendChild(anchor)
+    anchor.click()
+    document.body.removeChild(anchor)
 }
 
 function measureTextWidth(lineIdx) {

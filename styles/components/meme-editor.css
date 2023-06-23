@@ -37,6 +37,7 @@
     border-radius:0.5em ;
     width: 37px;
     height: 37px;
+    cursor: pointer;
 
 
 }
@@ -72,6 +73,7 @@
     height: 35px;
     border-radius: 0.5em;
     margin-inline: 4px;
+    cursor: pointer;
 }
 
 .control-area .fb-upload img{
@@ -80,7 +82,7 @@
 }
 .control-area .fb-upload{
     background-color: gray;
-    cursor: pointer;
+   
     border-style: none;
 }
 .control-area .fb-upload:hover{
@@ -94,7 +96,7 @@
 .control-area .save-btn{
     border:2px solid var(--clr3) ;
     background-color: var(--clr1);
-    cursor: pointer;
+  
 }
 .control-area .dl-link{
     display: flex;
@@ -102,6 +104,7 @@
     text-decoration: none;
     border:2px solid var(--clr3) ;
     background-color: var(--clr1);
+   
 }
 
 .control-area #line-txt{

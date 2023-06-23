@@ -1,46 +1,47 @@
 @font-face {
     font-family: inconsolata;
-    src: url("fonts/inconsolata/Inconsolata-Regular.ttf");
+    src: url("../../fonts/inconsolata/Inconsolata-Regular.ttf");
 }
 
 @font-face {
     font-family: eurofurence;
-    src: url("fonts/eurofurence/eurofurence-regular.ttf");
+    src: url("../../fonts/eurofurence/eurofurence-regular.ttf");
 }
 
 @font-face {
     font-family: impact1;
-    src: url("fonts/impact/impact.ttf");
+    src: url("../../fonts/impact/impact.ttf");
 }
 
 @font-face {
     font-family: kablammo;
-    src: url("fonts/kablammo/Kablammo.ttf");
+    src: url("../../fonts/kablammo/Kablammo.ttf");
 }
 
 @font-face {
     font-family: lato;
-    src: url("fonts/lato/Lato-Regular.ttf");
+    src: url("../../fonts/lato/Lato-Regular.ttf");
 }
 
 @font-face {
     font-family: playfair;
-    src: url("fonts/playfair/PlayfairDisplay-Regular.ttf");
+    src: url("../../fonts/playfair/PlayfairDisplay-Regular.ttf");
 }
 
 @font-face {
     font-family: ubuntu;
-    src: url("fonts/ubuntu/Ubuntu-Light.ttf");
+    src: url("../../fonts/ubuntu/Ubuntu-Light.ttf");
 }
 @font-face {
     font-family: belanosima;
-    src: url("fonts/belanosima/Belanosima-Regular.ttf");
+    src: url("../../fonts/belanosima/Belanosima-Regular.ttf");
 }
 @font-face {
     font-family: dancing;
-    src: url("fonts/dancing/dancing.ttf");
+    src: url("../../fonts/dancing/dancing.ttf");
 }
 @font-face {
     font-family: source;
-    src: url("fonts/source/SourceCodePro-VariableFont_wght.ttf");
+    src: url("../../fonts/source/SourceCodePro-VariableFont_wght.ttf");
+    
 }
