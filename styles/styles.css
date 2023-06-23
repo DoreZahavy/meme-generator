@@ -13,6 +13,8 @@
 @import url("components/meme-editor.css");
 @import url("components/saved-memes.css");
 @import url("components/fonts-slider.css");
+@import url("components/main-footer.css");
+@import url("components/share-fallback.css");
 
 /* MQ */
 @import url("basics/mq.css");

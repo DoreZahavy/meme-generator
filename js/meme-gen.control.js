@@ -17,8 +17,28 @@ function onInit() {
     addListeners()
     gElGallery.classList.add('show')
 
+    renderKeywords()
+
     onCleanFilter()
     renderImages()
+
+}
+
+function renderKeywords() {
+    const maxKey = findMaxKeyword()
+    const minKey = findMinKeyword()
+    const maxFSize = 3
+    const minFSize = 1
+
+    const keywordMap = getKeywordCountMap()
+    var strHTML = ''
+    for (const keyword in keywordMap) {
+        var keyCount = keywordMap[keyword]
+        // Calculate desired fontsize relative to max and min previous searches
+        var fontSize = ((keyCount - minKey) * (maxFSize - minFSize)) / (maxKey - minKey) + minFSize
+        strHTML += `<li onclick="onSetFilter('${keyword}')" style="font-size:${fontSize}em;">${keyword}</li>\n`
+    }
+    document.querySelector('.keywords-container').innerHTML = strHTML
 
 }
 
@@ -212,17 +232,21 @@ function onTextInput(txt) {
 function onSaveMeme() {
     deselect()
     renderMeme()
-    setTimeout(saveMeme, 1000)
+    setTimeout(function () {
+        saveMeme()
+        onOpenSaved()
+    }, 1000)
+
 }
 
 function onDownloadCanvas() {
     deselect()
     renderMeme()
 
-    setTimeout(downloadCanvas,1000)
+    setTimeout(downloadCanvas, 1000)
 }
 
-function downloadCanvas(){
+function downloadCanvas() {
     const data = gElCanvas.toDataURL()
     const anchor = document.createElement('a')
     anchor.href = data
@@ -301,8 +325,10 @@ function onRemoveSavedMeme(idx) {
     renderSavedMemes()
 }
 
-function onSetFilter(category) {
-    setFilter(category)
+function onSetFilter(keyword) {
+    setFilter(keyword)
+    document.querySelector(`#filter`).value = keyword
+    renderKeywords()
     renderImages()
 }
 
@@ -312,11 +338,33 @@ function onCleanFilter() {
     renderImages()
 }
 
-function onToggleFonts(){
+function onToggleFonts() {
     document.querySelector('.fonts-container').classList.toggle("expanded")
 }
 
-function onSetFont(font){
+function onSetFont(font) {
     setFont(font)
     renderMeme()
+}
+
+function onShare() {
+    if (navigator.share) {
+        const title = window.document.title
+        const url = window.document.location.href
+        navigator.share({
+            title: `${title}`,
+            url: `${url}`,
+            text: 'Check out this meme generator!'
+        }).then(() => {
+            console.log('Sharing Completed')
+        })
+            .catch(console.error)
+    } else {
+        onToggleShareModal()
+    }
+}
+
+function onToggleShareModal() {
+    document.querySelector('.shade-screen').classList.toggle('show')
+    document.querySelector('.share-modal').classList.toggle('show')
 }

@@ -24,6 +24,7 @@
 }
 
 .image-gallery [name="filter"]{
+    display: inline-block;
     margin-inline-start: 40px;
     border: 1px solid var(--clr3);
 
@@ -35,7 +36,8 @@
     columns: 1;
 
     place-items: center;
-    padding-inline: 40px;
+    
+    /* padding-inline: 40px; */
     margin-block-start: 25px;
     column-gap: 15px;
 
@@ -47,4 +49,23 @@
     width: 100%;
     cursor: pointer;
     margin-block-end: 15px;
+}
+
+.image-gallery .keywords-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-basis: 1;
+    align-items: center;
+    grid-area: 2/1/2/2;
+}
+
+.image-gallery .keywords-container>*{
+    margin-inline-end: 0.4em;
+    cursor: pointer;
+}
+
+.image-gallery .gallery-title{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    letter-spacing:0;
 }

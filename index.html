@@ -13,7 +13,7 @@
 
         <Header class="main-header full">
             <nav class="nav-container flex-center space-between">
-                <h2 class="logo">memegen</h2>
+                <h2 onclick="onOpenGallery()" class="logo">memegen</h2>
                 <ul class="nav flex align-center justify-center clean-list">
                     <li onclick="onOpenGallery()">Gallery</li>
                     <li onclick="onOpenSaved()">Saved</li>
@@ -23,9 +23,9 @@
 
         <section class="image-gallery">
             <header class="gallery-header">
-                <h1>Choose Starting Image</h1>
-                <div class="filter-area flex align-center">
+                <h1 class="gallery-title">Choose Starting Image</h1>
 
+                <div class="filter-area flex align-center">
                     <input oninput="onSetFilter(this.value)" type="text" name="filter" id="filter" list="categories"
                         placeholder="-search by category-">
                     <datalist id="categories">
@@ -36,12 +36,15 @@
                         <option value="movies">
                         <option value="cool">
                         <option value="funny">
-                        <option value="Party">
-                        <option value="Crazy">
-                        <option value="Evil">
+                        <option value="party">
+                        <option value="crazy">
+                        <option value="evil">
                     </datalist>
                     <button class="filter-btn" onclick="onCleanFilter()"><img src="img/icons/clean.png" alt=""></button>
                 </div>
+                <ul class="keywords-container clean-list">
+
+                </ul>
             </header>
             <div class="grid-container">
             </div>
@@ -55,7 +58,7 @@
                 </div>
                 <div class="control-area flex column space-between">
                     <input type="text" oninput="onTextInput(this.value)" name="line-txt" id="line-txt">
-                    
+
                     <button class="font-btn" onclick="onToggleFonts()">Fonts</button>
                     <div class="fonts-container">
                         <ul class="fonts-list clean-list">
@@ -71,14 +74,16 @@
                             <li onclick="onSetFont('dancing')">dancing</li>
                         </ul>
                     </div>
-                    
-                    
+
+
                     <div class="txt-btns flex space space-evenly">
-                        <button onclick="onAddLine()" title="Add Line"><img src="img/icons/add.png" alt="" srcset=""></button>
+                        <button onclick="onAddLine()" title="Add Line"><img src="img/icons/add.png" alt=""
+                                srcset=""></button>
                         <button onclick="onSetFontSize(5)"><img src="img/icons/big-font.png" alt="" srcset=""></button>
                         <button onclick="onSetFontSize(-5)"><img src="img/icons/small-font.png" alt=""></button>
                         <button onclick="onToggleOutline()"><img src="img/icons/outline.png" alt=""></button>
-                        <button onclick="onRemoveLine()" title="Delete Line"><img src="img/icons/delete.png" alt=""></button>
+                        <button onclick="onRemoveLine()" title="Delete Line"><img src="img/icons/delete.png"
+                                alt=""></button>
                     </div>
                     <div class="clr-inputs flex space-evenly">
                         <div>
@@ -97,12 +102,13 @@
                     <div class="url-btns flex">
 
                         <!-- <input type="color" name="colorFill" id="colorFill" value1="#fefefe"> -->
-                        <button class="save-btn" title="Save Meme" onclick="onSaveMeme()"><img src="img/icons/save.png" alt=""
-                                srcset=""></button>
-                        <button class="fb-upload flex-center" title="Share on Facebook" onclick="onUploadImg()"><img src="img/icons/facebook.png"
-                                alt=""></button>
-                        <button class="dl-link" title="Download" onclick="onDownloadCanvas()" ><img
+                        <button class="save-btn" title="Save Meme" onclick="onSaveMeme()"><img src="img/icons/save.png"
+                                alt="" srcset=""></button>
+                        <button class="fb-upload flex-center" title="Share on Facebook" onclick="onUploadImg()"><img
+                                src="img/icons/facebook.png" alt=""></button>
+                        <button class="dl-link" title="Download" onclick="onDownloadCanvas()"><img
                                 src="img/icons/download.png" alt="" srcset=""></button>
+                        <button onclick="onShare()" class="share-api"><img src="img/icons/share.png" alt=""></button>
                     </div>
                 </div>
             </div>
@@ -114,8 +120,18 @@
             </div>
         </section>
 
-        <footer class="main-footer"></footer>
+        <footer class="main-footer full flex column"><img src="img/icons/dz.png" alt=""></footer>
     </main>
+
+    <section class="share-fallback">
+        <div class="shade-screen" onclick="onToggleShareModal()"></div>
+        <div class="share-modal">
+            <p>Sharing is not supported by your browser</p>
+            <p>Try sharing on facebook!</p>
+            <button class="fb-upload flex-center" title="Share on Facebook" onclick="onUploadImg()"><img
+                src="img/icons/facebook.png" alt=""></button>
+        </div>
+    </section>
 
     <script src="js/services/util.service.js"></script>
     <script src="js/services/storage.service.js"></script>

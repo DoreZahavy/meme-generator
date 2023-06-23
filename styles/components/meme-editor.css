@@ -114,7 +114,16 @@
     height: 2.5em;
 }
 
-.control-area #line-txt::after{
+
+.control-area .share-api{
+    border:2px solid var(--clr3) ;
+    background-color: var(--clr1);
+}
+.control-area .share-api img{
+    justify-self: center;
+}
+
+/* .control-area #line-txt::after{
     content: '';
     position: absolute;
     width: 10px;
@@ -122,6 +131,6 @@
     background-color: var(--clr3);
     top: 10px;
     left: 5px;
-}
+} */
 
 

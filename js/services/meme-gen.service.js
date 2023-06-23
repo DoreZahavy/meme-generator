@@ -8,7 +8,7 @@ var gImgs = [
     { id: 5, url: 'img/5.jpg', keywords: ['kids', ''] },
     { id: 6, url: 'img/6.jpg', keywords: ['crazy', ''] },
     { id: 7, url: 'img/7.jpg', keywords: ['kids', ''] },
-    { id: 8, url: 'img/8.jpg', keywords: ['movies', 'cool'] },
+    { id: 8, url: 'img/8.jpg', keywords: ['movies', ''] },
     { id: 9, url: 'img/9.jpg', keywords: ['kids', 'funny'] },
     { id: 10, url: 'img/10.jpg', keywords: ['politics', 'funny'] },
     { id: 11, url: 'img/11.jpg', keywords: ['party', 'friendship'] },
@@ -29,6 +29,7 @@ var gImgs = [
 ]
 
 const STORAGE_KEY_MEMES = 'savedMemesDB'
+const STORAGE_KEY_COUNT_MAP = 'countMapDB'
 
 var gSavedMemes = _loadMemes()
 
@@ -38,9 +39,6 @@ var gMeme = {
     lines: []
 }
 
-function getSavedMemes() {
-    return gSavedMemes
-}
 
 var gMode = {
     isRotate: false,
@@ -50,8 +48,41 @@ var gMode = {
 
 var gFilter
 
-// not in use (yet)
-var gKeywordSearchCountMap = { 'funny': 0, 'cat': 0, 'baby': 0 }
+var gKeywordSearchCountMap = _loadCountMap()
+
+function getSavedMemes() {
+    return gSavedMemes
+}
+
+function _loadCountMap(){
+    let countMap = loadFromStorage(STORAGE_KEY_COUNT_MAP)
+    if (!countMap) countMap =  { 'animals': 17, 'politics': 45, 'friendship': 39, 'kids': 58, 'movies': 21, 'cool': 23, 'funny': 43, 'party': 64, 'crazy': 53, 'evil': 40 }
+    return countMap
+}
+
+
+function getKeywordCountMap(){
+    return gKeywordSearchCountMap
+}
+
+function findMaxKeyword() {
+    var max = -Infinity
+    for (const keyword in gKeywordSearchCountMap) {
+        if (gKeywordSearchCountMap[keyword] > max)
+            max = gKeywordSearchCountMap[keyword]
+    }
+    return max
+}
+
+function findMinKeyword() {
+    var min = Infinity
+    for (const keyword in gKeywordSearchCountMap) {
+        if (gKeywordSearchCountMap[keyword] < min)
+            min = gKeywordSearchCountMap[keyword]
+    }
+    return min
+}
+
 
 function setMeme(imgId) {
     gMeme.selectedImgId = imgId
@@ -173,7 +204,7 @@ function resizeLine(x, y, resizePos) {
     const prevFSize = line.fontSize
     // Measuring change in both axes and averaging
     const yFSize = line.fontSize - dy
-    const xFSize = line.fontSize *( 1 - (2 * dx) / measureTextWidth(gMeme.selectedLineIdx))
+    const xFSize = line.fontSize * (1 - (2 * dx) / measureTextWidth(gMeme.selectedLineIdx))
     const newSize = (yFSize + xFSize) / 2
 
     // Limiting font size
@@ -200,7 +231,7 @@ function setColorFill(color) {
     gMeme.lines[gMeme.selectedLineIdx].colorFill = color
 }
 
-function setFont(font){
+function setFont(font) {
     gMeme.lines[gMeme.selectedLineIdx].font = font.toLowerCase()
 }
 
@@ -222,6 +253,9 @@ function deselect() {
     gMeme.selectedLineIdx = -1
 }
 
-function setFilter(category) {
-    gFilter = category
+function setFilter(keyword) {
+    gKeywordSearchCountMap[keyword]++
+    gFilter = keyword
+    saveToStorage(STORAGE_KEY_COUNT_MAP,gKeywordSearchCountMap)
 }
+

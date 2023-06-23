@@ -16,6 +16,7 @@
     .image-gallery .grid-container ,
     .saved-memes .memes-container{
         columns: 2;
+        margin-inline: 30px;
     }
     .editor-grid {
         display: grid;
