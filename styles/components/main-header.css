@@ -6,12 +6,8 @@
   box-shadow: 0 0 0 5px var(--clr3);
 }
 
-/* .main-header .nav-container .nav{
-
-} */
 
 .main-header .nav-container .nav>*{
-    /* margin-inline-start: 12px; */
     display: flex;
     justify-content:center ;
     align-items: center;
@@ -20,6 +16,11 @@
     cursor: pointer;
     border-inline-start: 1px solid var(--clr3);
     
+}
+
+.main-header .nav-container .nav>*:hover{
+    border-inline: 2px solid var(--clr3);
+    /* color: var(--clr5); */
 }
 .main-header .logo{
     font-family: eurofurence;

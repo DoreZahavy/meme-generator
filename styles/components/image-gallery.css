@@ -69,3 +69,14 @@
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
     letter-spacing:0;
 }
+
+.file-input-btn{
+    margin-inline-start: 40px;
+    margin-block-end: 1em;
+    border: 1px solid var(--clr3);
+    /* background-color: var(--clr3); */
+    padding: 5px;
+    border: 0.5em;
+    
+    /* margin: auto; */
+}

@@ -6,7 +6,7 @@
     overflow: hidden;
     transition: grid-template-rows 1s;
     position: absolute;
-    top: 35%;
+    top: 48%;
     /* width: 100%; */
 }
 
@@ -15,15 +15,23 @@
 
 }
 
-.font-btn{
-    font-family: impact1, sans-serif;
+.font-btn {
+    /* font-family: impact1, sans-serif; */
+    font-family: dancing;
     font-size: 20px;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.1em;
+    font-weight: 700;
     background-color: var(--clr1);
-border: 2px solid var(--clr3);
-border-radius: 0.3em;
-height: 30px;
-cursor: pointer;
+    border: 2px solid var(--clr3);
+    border-radius: 0.3em;
+    height: 30px;
+    cursor: pointer;
+}
+
+.font-btn:hover,
+.fonts-list li:hover {
+    background-color: var(--clr5);
+    /* border: 2x solid var(--clr3); */
 }
 
 .fonts-list {
@@ -90,4 +98,3 @@ cursor: pointer;
 .fonts-container .fonts-list>li:nth-child(10) {
     font-family: dancing;
 }
-

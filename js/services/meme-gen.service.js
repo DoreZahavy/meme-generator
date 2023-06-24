@@ -36,7 +36,8 @@ var gSavedMemes = _loadMemes()
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
-    lines: []
+    lines: [],
+    uploadData: ''
 }
 
 
@@ -50,18 +51,38 @@ var gFilter
 
 var gKeywordSearchCountMap = _loadCountMap()
 
+// const ICONS_PAGE_SIZE = 5
+var gIconIdx = 0
+var gIcons = ['😀', '🎈', '✨', '🕶', '🎩', '🎵', '💰', '🌌', '❄', '🔥', '🌠', '🍕', '🍺', '🤣', '😍', '🤑', '😢', '☠', '🐾', '🐢', '🐍']
+
 function getSavedMemes() {
     return gSavedMemes
 }
 
-function _loadCountMap(){
+function getIcons() {
+    var iconIdx = gIconIdx
+    var icons = [gIcons[gIconIdx]]
+    for (var i = 0; i < 4; i++) {
+        iconIdx++
+
+        if (iconIdx >= gIcons.length) iconIdx = 0
+        icons[i + 1] = gIcons[iconIdx]
+    }
+
+
+
+    //  gIcons.slice(gIconIdx, gIconIdx+5)
+    return icons
+}
+
+function _loadCountMap() {
     let countMap = loadFromStorage(STORAGE_KEY_COUNT_MAP)
-    if (!countMap) countMap =  { 'animals': 17, 'politics': 45, 'friendship': 39, 'kids': 58, 'movies': 21, 'cool': 23, 'funny': 43, 'party': 64, 'crazy': 53, 'evil': 40 }
+    if (!countMap) countMap = { 'animals': 17, 'politics': 45, 'friendship': 39, 'kids': 58, 'movies': 21, 'cool': 23, 'funny': 43, 'party': 64, 'crazy': 53, 'evil': 40 }
     return countMap
 }
 
 
-function getKeywordCountMap(){
+function getKeywordCountMap() {
     return gKeywordSearchCountMap
 }
 
@@ -98,6 +119,7 @@ function getImages() {
 }
 
 function setLineTxt(txt) {
+    if (gMeme.selectedLineIdx === -1) return
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
@@ -256,6 +278,37 @@ function deselect() {
 function setFilter(keyword) {
     gKeywordSearchCountMap[keyword]++
     gFilter = keyword
-    saveToStorage(STORAGE_KEY_COUNT_MAP,gKeywordSearchCountMap)
+    saveToStorage(STORAGE_KEY_COUNT_MAP, gKeywordSearchCountMap)
 }
 
+function setImageData(data) {
+    gMeme.uploadData = data
+}
+
+function addIcon(x, y, icon) {
+
+    gMeme.lines.push(_createIcon(x, y, icon))
+
+    selectLine(gMeme.lines.length - 1)
+}
+
+function _createIcon(x, y, icon) {
+    return {
+        txt: icon,
+        colorFill: '#fefefe',
+        colorStroke: '#010101',
+        font: 'impact1',
+        fontSize: 40,
+        outline: 2,
+        rotate: 0,
+        x,
+        y,
+        data: ''
+    }
+}
+
+function setCarouselIdx(iconIdx) {
+    gIconIdx += iconIdx
+    if (gIconIdx >= gIcons.length) gIconIdx = 0
+    if (gIconIdx < 0) gIconIdx = gIcons.length - 1
+}

@@ -83,7 +83,10 @@ function onDown(ev) {
     } else if (findLineIdx(pos)) {
         setDragMode(true)
         gLastPos = pos
-    } else deselect()
+    } else {
+        deselect()
+        document.querySelector('#line-txt').value = ''
+    }
     document.body.style.cursor = 'grabbing'
     renderMeme()
 
@@ -145,16 +148,19 @@ function onOpenEditor(imgId) {
     gElEditor.classList.add('show')
     gElSavedMemes.classList.remove('show')
     resizeCanvas()
+
+   renderIcons()
     document.querySelector('#line-txt').focus()
     setMeme(imgId)
-    if (getMeme().lines.length === 0) addLine(gElCanvas.width / 2, 40)
+    if (getMeme().lines.length === 0) addLine(gElCanvas.width / 2, 50)
     renderMeme()
 }
 
 function renderMeme() {
     const meme = getMeme()
     const img = new Image()
-    img.src = `img/bgs/${meme.selectedImgId}.jpg`
+    if (meme.selectedImgId===0) img.src = meme.uploadData
+    else img.src = `img/bgs/${meme.selectedImgId}.jpg`
     img.onload = () => {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
@@ -260,6 +266,36 @@ function measureTextWidth(lineIdx) {
     return gCtx.measureText(gMeme.lines[lineIdx].txt).width
 }
 
+function onImgInput(ev) {
+    onOpenEditor(0)
+    loadImageFromInput(ev, renderMeme)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    const reader = new FileReader()
+
+    reader.onload = function (event) {
+        let img = new Image() 
+        
+        setImageData(event.target.result) 
+   
+    }
+    reader.readAsDataURL(ev.target.files[0]) 
+}
+
+function renderIcons(){
+    const icons = getIcons()
+    var strHTMLs = icons.map(icon=>`
+    <button class="icon-btn" onclick="onAddIcon('${icon}')">${icon}</button>
+    `)
+    document.querySelector('.icon-display').innerHTML = strHTMLs.join('')
+}
+
+function onIconCarousel(iconIdx){
+    setCarouselIdx(iconIdx)
+    renderIcons()
+}
+
 function onSetFontSize(sizeDiff) {
     setFontSize(sizeDiff)
     renderMeme()
@@ -355,10 +391,7 @@ function onShare() {
             title: `${title}`,
             url: `${url}`,
             text: 'Check out this meme generator!'
-        }).then(() => {
-            console.log('Sharing Completed')
         })
-            .catch(console.error)
     } else {
         onToggleShareModal()
     }
@@ -367,4 +400,11 @@ function onShare() {
 function onToggleShareModal() {
     document.querySelector('.shade-screen').classList.toggle('show')
     document.querySelector('.share-modal').classList.toggle('show')
+}
+
+function onAddIcon(icon){
+    const width = gElCanvas.width / 2
+    const height = gElCanvas.height / 2
+    addIcon(width,height,icon)
+    renderMeme
 }

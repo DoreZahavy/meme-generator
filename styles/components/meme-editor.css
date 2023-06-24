@@ -123,6 +123,44 @@
     justify-self: center;
 }
 
+.control-area .save-btn:hover,
+.control-area .share-api:hover,
+.control-area .dl-link:hover,
+.control-area .txt-btns>*:hover{
+    background-color: var(--clr5);
+}
+
+
+.icon-carousel>*{
+    /* font-size: 4em; */
+    margin-inline: 0.2em;
+}
+.icon-carousel .carousel-btn,
+.icon-carousel .icon-btn{
+    border-radius:0.5em ;
+    border:2px solid var(--clr3) ;
+    background-color: var(--clr1);
+    /* background-color: transparent; */
+    cursor: pointer;
+}
+
+.icon-carousel .carousel-btn img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+}
+
+.icon-carousel .icon-btn{
+    width: 30px;
+    height: 30px;
+}
+
+.icon-carousel .carousel-btn:hover,
+.icon-carousel .icon-btn:hover{
+    background-color: var(--clr5);
+}
+
 /* .control-area #line-txt::after{
     content: '';
     position: absolute;

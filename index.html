@@ -23,11 +23,12 @@
 
         <section class="image-gallery">
             <header class="gallery-header">
-                <h1 class="gallery-title">Choose Starting Image</h1>
+                <h1 class="gallery-title">Choose Template Image. Or Upload</h1> 
+                <input type="file" class="file-input-btn" name="image" onchange="onImgInput(event)" accept="image/*" />
 
                 <div class="filter-area flex align-center">
                     <input oninput="onSetFilter(this.value)" type="text" name="filter" id="filter" list="categories"
-                        placeholder="-search by category-">
+                        placeholder=" - search by keyword -">
                     <datalist id="categories">
                         <option value="animals">
                         <option value="politics">
@@ -51,13 +52,19 @@
         </section>
 
         <section class="meme-editor">
-            <div class="editor-grid">
 
+            <div class="editor-grid">
+                
                 <div class="canvas-container">
                     <canvas class="meme-canvas"></canvas>
                 </div>
                 <div class="control-area flex column space-between">
-                    <input type="text" oninput="onTextInput(this.value)" name="line-txt" id="line-txt">
+                    <input type="text" oninput="onTextInput(this.value)" name="line-txt" id="line-txt" placeholder=" - nothing selected -">
+                    <div class="icon-carousel flex justify-center">
+                        <button onclick="onIconCarousel(-1)" class="carousel-btn"><img src="img/icons/left.png" alt=""></button>
+                        <div class="icon-display"></div>
+                        <button onclick="onIconCarousel(1)" class="carousel-btn"><img src="img/icons/right.png" alt=""></button>
+                    </div>
 
                     <button class="font-btn" onclick="onToggleFonts()">Fonts</button>
                     <div class="fonts-container">
@@ -108,7 +115,7 @@
                                 src="img/icons/facebook.png" alt=""></button>
                         <button class="dl-link" title="Download" onclick="onDownloadCanvas()"><img
                                 src="img/icons/download.png" alt="" srcset=""></button>
-                        <button onclick="onShare()" class="share-api"><img src="img/icons/share.png" alt=""></button>
+                        <button onclick="onShare()" class="share-api" title="Share"><img src="img/icons/share.png" alt=""></button>
                     </div>
                 </div>
             </div>
@@ -119,7 +126,8 @@
 
             </div>
         </section>
-
+        
+      
         <footer class="main-footer full flex column"><img src="img/icons/dz.png" alt=""></footer>
     </main>
 
@@ -128,8 +136,10 @@
         <div class="share-modal">
             <p>Sharing is not supported by your browser</p>
             <p>Try sharing on facebook!</p>
-            <button class="fb-upload flex-center" title="Share on Facebook" onclick="onUploadImg()"><img
-                src="img/icons/facebook.png" alt=""></button>
+            <!-- <button class="fb-upload flex-center" title="Share on Facebook" onclick="onUploadImg()"><img
+                src="img/icons/facebook.png" alt=""></button> -->
+
+
         </div>
     </section>
 
