@@ -23,8 +23,8 @@
 
         <section class="image-gallery">
             <header class="gallery-header">
-                <h1 class="gallery-title">Choose Template Image. Or Upload</h1> 
-                <input type="file" class="file-input-btn" name="image" onchange="onImgInput(event)" accept="image/*" />
+                <h1 class="gallery-title">Choose Template Image. Or <label for="img-upload">Upload</label></h1> 
+                <input type="file" class="file-input-btn" name="image" id="img-upload" onchange="onImgInput(event)" accept="image/*" />
 
                 <div class="filter-area flex align-center">
                     <input oninput="onSetFilter(this.value)" type="text" name="filter" id="filter" list="categories"

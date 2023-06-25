@@ -17,7 +17,8 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
-    margin-inline-start: 3px;
+    margin-inline-start: 2px;
+    border-radius: 0 0.5em 0.5em 0;
 }
 .image-gallery .filter-btn img{
     width: 18px;
@@ -25,9 +26,13 @@
 
 .image-gallery [name="filter"]{
     display: inline-block;
-    margin-inline-start: 40px;
     border: 1px solid var(--clr3);
+    border-radius:  0.5em 0 0 0.5em ;
+    
+}
+.filter-area{
 
+    margin-block-end: 20px;
 }
 
 .image-gallery .grid-container{
@@ -77,6 +82,19 @@
     /* background-color: var(--clr3); */
     padding: 5px;
     border: 0.5em;
-    
+
     /* margin: auto; */
+}
+
+.image-gallery .gallery-header label{
+text-decoration: underline 2px var(--clr3);
+cursor: pointer;
+}
+.image-gallery .gallery-header label:hover{
+background-color: var(--clr5);
+border-radius: 0.3em;
+/* outline: 1px solid var(--clr3); */
+}
+.image-gallery .gallery-header .file-input-btn{
+display: none;
 }

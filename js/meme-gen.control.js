@@ -406,5 +406,5 @@ function onAddIcon(icon){
     const width = gElCanvas.width / 2
     const height = gElCanvas.height / 2
     addIcon(width,height,icon)
-    renderMeme
+    renderMeme()
 }

@@ -1,9 +1,11 @@
 .main-header{
     position: sticky;
     top: 0;
+    height: 80px;
     background-color: var(--clr4);
   color: var(--clr1);
   box-shadow: 0 0 0 5px var(--clr3);
+  z-index: 2;
 }
 
 
