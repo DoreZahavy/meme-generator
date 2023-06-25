@@ -88,20 +88,20 @@
                     <div class="txt-btns flex">
                         <button onclick="onAddLine()" title="Add Line"><img src="img/icons/add.png" alt=""
                                 srcset=""></button>
-                        <button onclick="onSetFontSize(5)"><img src="img/icons/big-font.png" alt="" srcset=""></button>
-                        <button onclick="onSetFontSize(-5)"><img src="img/icons/small-font.png" alt=""></button>
-                        <button onclick="onToggleOutline()"><img src="img/icons/outline.png" alt=""></button>
+                        <button onclick="onSetFontSize(5)" title="Font Size"><img src="img/icons/big-font.png" alt="" srcset=""></button>
+                        <button onclick="onSetFontSize(-5)" title="Font Size"><img src="img/icons/small-font.png" alt=""></button>
+                        <button onclick="onToggleOutline()" title="Outline"><img src="img/icons/outline.png" alt=""></button>
                         <button onclick="onRemoveLine()" title="Delete Line"><img src="img/icons/delete.png"
                                 alt=""></button>
                     </div>
                     <div class="clr-inputs flex space-evenly">
-                        <div>
+                        <div title="Stroke Color">
 
                             <label for="colorStroke"><img src="img/icons/stroke.png" alt="" srcset=""></label>
                             <input type="color" oninput="onSetColorStroke(this.value)" name="colorStroke"
                                 id="colorStroke" value="#ffffff">
                         </div>
-                        <div>
+                        <div title="Fill Color">
 
                             <label for="colorFill"><img src="img/icons/fill.png" alt=""></label>
                             <input type="color" oninput="onSetColorFill(this.value)" name="colorFill" id="colorFill"
@@ -116,7 +116,7 @@
                                 src="img/icons/facebook.png" alt=""></button>
                         <button class="dl-link" title="Download" onclick="onDownloadCanvas()"><img
                                 src="img/icons/download.png" alt="" srcset=""></button>
-                        <button onclick="onShare()" class="share-api" title="Share"><img src="img/icons/share.png" alt=""></button>
+                        <button onclick="onShare()" class="share-api" title="Share Website"><img src="img/icons/share.png" alt=""></button>
                     </div>
                 </div>
             </div>

@@ -43,23 +43,20 @@
 
 }
 
-/* .control-area .txt-btns>*:first-child img{
- width: 20px;
- height: 20px; */
 
-
-/* } */
 
 .control-area .clr-inputs input {
     width: 45px;
     height: 45px;
     border: none;
     border: 1px solid black;
+    cursor: pointer;
 }
 
 .control-area .clr-inputs label {
     width: 45px;
     height: 45px;
+    cursor: pointer;
 }
 
 .control-area .url-btns {
@@ -220,3 +217,43 @@
     border: 2px solid var(--clr3);
     border-radius: 0.3em;
 }
+
+[title="Font Size"], 
+[title="Stroke Color"], 
+[title="Fill Color"], 
+[title="Outline"], 
+[title="Save Meme"], 
+[title="Share on Facebook"], 
+[title="Download"], 
+[title="Share Website"], 
+[title="Delete Line"], 
+[title="Add Line"]{
+    position: relative;
+  }
+
+  [title="Font Size"]:hover::after,
+  [title="Fill Color"]:hover::after,
+  [title="Stroke Color"]:hover::after,
+  [title="Outline"]:hover::after,
+  [title="Save Meme"]:hover::after,
+  [title="Share on Facebook"]:hover::after,
+  [title="Download"]:hover::after,
+  [title="Share Website"]:hover::after,
+  [title="Delete Line"]:hover::after,
+  [title="Add Line"]:hover::after{
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 0.1px;
+    content: attr(title);
+    position: absolute;
+    font-size: 12px;
+    background: var(--clr1);
+    color: var(--clr4);
+    padding: 0.2em 0.3em;
+    border: 1px solid var(--clr3);
+    border-radius: 0.3em;
+    text-transform: capitalize;
+    bottom: -25px;
+    width: max-content;
+    left: 12px;
+    z-index: 2;
+  }

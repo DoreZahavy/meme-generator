@@ -76,9 +76,9 @@ function onDown(ev) {
     const pos = getEvPos(ev)
 
     // checking what user clicked
-    if (calcDistance(pos.x, pos.y, gRotatePos) < 10) {
+    if (calcDistance(pos.x, pos.y, gRotatePos) < 15) {
         setRotateMode(true)
-    } else if (calcDistance(pos.x, pos.y, gResizePos) < 10) {
+    } else if (calcDistance(pos.x, pos.y, gResizePos) < 15) {
         setResizeMode(true)
     } else if (findLineIdx(pos)) {
         setDragMode(true)
@@ -210,7 +210,7 @@ function markSelectedLine(line) {
     gCtx.stroke()
     gCtx.beginPath()
     // Rotate indicator
-    gCtx.arc(0, - lineHeight * 0.8, 4, Math.PI, 2 * Math.PI)
+    gCtx.arc(0, - lineHeight * 0.8, 5, Math.PI, 2 * Math.PI)
     gCtx.stroke()
 
     // Saving rotate indicator location
