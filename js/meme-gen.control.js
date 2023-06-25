@@ -375,6 +375,7 @@ function onCleanFilter() {
 }
 
 function onToggleFonts() {
+    document.querySelector('.font-screen').classList.toggle('show')
     document.querySelector('.fonts-container').classList.toggle("expanded")
 }
 
@@ -400,6 +401,7 @@ function onShare() {
 function onToggleShareModal() {
     document.querySelector('.shade-screen').classList.toggle('show')
     document.querySelector('.share-modal').classList.toggle('show')
+
 }
 
 function onAddIcon(icon){

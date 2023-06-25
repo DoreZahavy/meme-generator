@@ -1,24 +1,23 @@
-
-.meme-editor{
+.meme-editor {
     display: none;
 }
 
-.meme-editor.show{
+.meme-editor.show {
     display: block;
 }
 
-.canvas-container{
+.canvas-container {
     background-color: blanchedalmond;
     height: 100%;
     cursor: grab;
     max-width: 900px;
 }
 
-.meme-canvas{
+.meme-canvas {
     display: block;
 }
 
-.control-area{
+.control-area {
     position: relative;
     height: 100%;
     border: 5px solid var(--clr3);
@@ -27,148 +26,197 @@
 
     background-color: var(--clr2);
     margin-block-start: 20px;
+
+
 }
 
 
 
-.control-area .txt-btns>*{
-    border:2px solid var(--clr3) ;
+.control-area .txt-btns>* {
+    border: 2px solid var(--clr3);
     background-color: var(--clr1);
-    border-radius:0.5em ;
-    width: 37px;
-    height: 37px;
+    border-radius: 0.5em;
+    width: 45px;
+    height: 45px;
     cursor: pointer;
 
 
 }
-.control-area .txt-btns>*:first-child img{
+
+/* .control-area .txt-btns>*:first-child img{
  width: 20px;
- height: 20px;
+ height: 20px; */
 
 
-}
+/* } */
 
-.control-area .clr-inputs input{
-    width: 35px;
-    height: 35px;
+.control-area .clr-inputs input {
+    width: 45px;
+    height: 45px;
     border: none;
     border: 1px solid black;
 }
 
-.control-area .clr-inputs label{
-    width: 35px;
-    height: 85px;
-    /* border:2px solid var(--clr3) ;
-    background-color: var(--clr1); */
+.control-area .clr-inputs label {
+    width: 45px;
+    height: 45px;
 }
 
-.control-area .url-btns{
+.control-area .url-btns {
     margin-inline: auto;
 }
 
-.control-area .url-btns>*{
+.control-area .url-btns>* {
     display: flex;
     justify-content: center;
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
     border-radius: 0.5em;
     margin-inline: 4px;
     cursor: pointer;
 }
 
-.control-area .fb-upload img{
-    width: 20px;
-    height: 20px;
-}
-.control-area .fb-upload{
+
+
+.control-area .fb-upload {
     background-color: gray;
-   
+
     border-style: none;
 }
-.control-area .fb-upload:hover{
+
+.control-area .fb-upload:hover {
     background-color: rgb(30, 48, 80);
 }
 
-.control-area img{
-    width: 25px;
+.control-area img {
+    width: 30px;
+    /* height: 30px; */
 }
 
-.control-area .save-btn{
-    border:2px solid var(--clr3) ;
+.control-area .save-btn {
+    border: 2px solid var(--clr3);
     background-color: var(--clr1);
-  
+
 }
-.control-area .dl-link{
+
+.control-area .dl-link {
     display: flex;
     align-items: center;
     text-decoration: none;
-    border:2px solid var(--clr3) ;
+    border: 2px solid var(--clr3);
     background-color: var(--clr1);
-   
+
 }
 
-.control-area #line-txt{
+.control-area #line-txt {
     position: relative;
     border: 2px solid var(--clr3);
-    border-radius: 0.2em;
+    border-radius: 0.3em;
     height: 2.5em;
 }
 
 
-.control-area .share-api{
-    border:2px solid var(--clr3) ;
+.control-area .share-api {
+    border: 2px solid var(--clr3);
     background-color: var(--clr1);
 }
-.control-area .share-api img{
+
+.control-area .share-api img {
     justify-self: center;
 }
 
 .control-area .save-btn:hover,
 .control-area .share-api:hover,
 .control-area .dl-link:hover,
-.control-area .txt-btns>*:hover{
+.control-area .txt-btns>*:hover {
     background-color: var(--clr5);
 }
 
 
-.icon-carousel>*{
-    /* font-size: 4em; */
-    margin-inline: 0.2em;
-}
-.icon-carousel .carousel-btn,
-.icon-carousel .icon-btn{
-    border-radius:0.5em ;
-    border:2px solid var(--clr3) ;
-    background-color: var(--clr1);
-    /* background-color: transparent; */
+
+.icon-carousel .icon-btn {
+    background-color: transparent;
+    border-style: none;
+    border-radius: 0.5em;
     cursor: pointer;
-}
-
-.icon-carousel .carousel-btn img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 15px;
-}
-
-.icon-carousel .icon-btn{
     width: 30px;
     height: 30px;
 }
 
+.icon-carousel .carousel-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--clr3);
+    background-color: var(--clr1);
+    border-radius: 0.5em;
+    cursor: pointer;
+    margin-inline: 0.3em;
+
+}
+
+
+
+.icon-carousel {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+}
+
+
 .icon-carousel .carousel-btn:hover,
-.icon-carousel .icon-btn:hover{
+.icon-carousel .icon-btn:hover {
     background-color: var(--clr5);
 }
 
-/* .control-area #line-txt::after{
-    content: '';
+
+
+.control-area .font-screen {
     position: absolute;
-    width: 10px;
-    height: 2px;
-    background-color: var(--clr3);
-    top: 10px;
-    left: 5px;
-} */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    pointer-events: none;
+    border-radius: 1em;
+
+    transition: opacity 0.6s;
+    opacity: 0;
+}
+
+.control-area .font-screen.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.txt-btns>*,
+.url-btns>*,
+.carousel-btn {
+    width: 45px;
+    height: 45px;
+}
+
+.font-btn {
+    width: 300px;
+    height: 45px;
+    margin: 0 auto;
+}
+
+.txt-btns>* {
 
 
+    margin-inline: 0.3em;
+}
+
+.txt-btns {
+    justify-content: center;
+}
+
+.icon-display {
+    background-color: var(--clr1);
+    border: 2px solid var(--clr3);
+    border-radius: 0.3em;
+}

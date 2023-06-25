@@ -1,4 +1,6 @@
 .fonts-container {
+position: absolute;
+
     display: grid;
     grid-template-rows: 0fr;
 
@@ -6,8 +8,8 @@
     overflow: hidden;
     transition: grid-template-rows 1s;
     position: absolute;
-    top: 48%;
-    /* width: 100%; */
+    top: 0;
+    top: 1em;
 }
 
 .fonts-container.expanded {
@@ -16,7 +18,7 @@
 }
 
 .font-btn {
-    /* font-family: impact1, sans-serif; */
+   /* position: relative; */
     font-family: dancing;
     font-size: 20px;
     letter-spacing: 0.1em;
@@ -26,14 +28,11 @@
     border-radius: 0.3em;
     height: 30px;
     cursor: pointer;
-    /* max-width: 300px; */
-    /* justify-self: center; */
 }
 
 .font-btn:hover,
 .fonts-list li:hover {
     background-color: var(--clr5);
-    /* border: 2x solid var(--clr3); */
 }
 
 .fonts-list {

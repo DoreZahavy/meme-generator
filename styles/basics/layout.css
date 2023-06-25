@@ -29,7 +29,7 @@
 .meme-editor .control-area{
     /* grid-column: 2; */
     grid-row: 2;
-    height: 300px;
+    height: 350px;
 }
 .meme-editor .grid-container{
     grid-row: 1;
