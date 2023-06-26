@@ -115,7 +115,15 @@ function getMeme() {
 
 function getImages() {
     if (!gFilter) return gImgs
-    else return gImgs.filter(img => img.keywords.includes(gFilter))
+    else return gImgs.filter(img => {
+
+        for (let i = 0; i < img.keywords.length; i++) {
+            if(img.keywords[i].includes(gFilter.toLowerCase())) return true
+            
+        }
+
+        // img.keywords.includes(gFilter)
+    })
 }
 
 function setLineTxt(txt) {
@@ -276,7 +284,7 @@ function deselect() {
 }
 
 function setFilter(keyword) {
-    gKeywordSearchCountMap[keyword]++
+    if (gKeywordSearchCountMap[keyword]) gKeywordSearchCountMap[keyword]++
     gFilter = keyword
     saveToStorage(STORAGE_KEY_COUNT_MAP, gKeywordSearchCountMap)
 }
