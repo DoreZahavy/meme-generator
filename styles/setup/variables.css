@@ -1,18 +1,12 @@
 :root {
     /* pallete */
-    /* --clr1: #FFC600; */
     --clr1: #faf4c1;
     --clr2: #26006d;
-    --clr3: #B31312;
+    --clr3: #b31312;
     --clr4: #0c0c0c;
-    --clr5: #FFC600;
-    /* --clr5: #ddad00; */
+    --clr5: #ffc600;
 
-  
-
-    --canvas-width: 300px
-
-    --l: 1060px;
+    --canvas-width: 300px --l: 1060px;
     --m: 860px;
     --s: 620px;
 }

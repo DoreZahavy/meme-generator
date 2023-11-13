@@ -1,23 +1,16 @@
 .saved-memes {
     display: none;
-    /* border: 2px solid black; */
-    /* height: 1000px; */
 }
 
 .saved-memes.show {
     display: block;
 }
 
-
 .saved-memes .memes-container {
-
     columns: 1;
-
     place-items: center;
     padding: 5vh;
     column-gap: 15px;
-
-
 }
 
 .saved-memes .memes-container img {
@@ -34,11 +27,9 @@
     translate: -30px 5px;
     width: 25px;
     height: 25px;
-
     border: 2px solid var(--clr3);
     background-color: var(--clr1);
     border-radius: 0.3em;
-
 }
 
 .saved-memes .memes-container button img {

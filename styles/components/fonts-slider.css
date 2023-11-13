@@ -1,9 +1,7 @@
 .fonts-container {
-position: absolute;
-
+    position: absolute;
     display: grid;
     grid-template-rows: 0fr;
-
     place-items: center;
     overflow: hidden;
     transition: grid-template-rows 1s;
@@ -14,11 +12,9 @@ position: absolute;
 
 .fonts-container.expanded {
     grid-template-rows: 1fr;
-
 }
 
 .font-btn {
-   /* position: relative; */
     font-family: dancing;
     font-size: 20px;
     letter-spacing: 0.1em;
@@ -39,11 +35,8 @@ position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
-
     min-height: 0;
     transition: visibility 1s;
-
-
     background-color: var(--clr1);
 }
 
@@ -60,42 +53,42 @@ position: absolute;
     visibility: visible;
 }
 
-.fonts-container .fonts-list>li:nth-child(1) {
+.fonts-container .fonts-list > li:nth-child(1) {
     font-family: impact1;
 }
 
-.fonts-container .fonts-list>li:nth-child(2) {
+.fonts-container .fonts-list > li:nth-child(2) {
     font-family: eurofurence;
 }
 
-.fonts-container .fonts-list>li:nth-child(3) {
+.fonts-container .fonts-list > li:nth-child(3) {
     font-family: kablammo;
 }
 
-.fonts-container .fonts-list>li:nth-child(4) {
+.fonts-container .fonts-list > li:nth-child(4) {
     font-family: inconsolata;
 }
 
-.fonts-container .fonts-list>li:nth-child(5) {
+.fonts-container .fonts-list > li:nth-child(5) {
     font-family: lato;
 }
 
-.fonts-container .fonts-list>li:nth-child(6) {
+.fonts-container .fonts-list > li:nth-child(6) {
     font-family: playfair;
 }
 
-.fonts-container .fonts-list>li:nth-child(7) {
+.fonts-container .fonts-list > li:nth-child(7) {
     font-family: ubuntu;
 }
 
-.fonts-container .fonts-list>li:nth-child(8) {
+.fonts-container .fonts-list > li:nth-child(8) {
     font-family: belanosima;
 }
 
-.fonts-container .fonts-list>li:nth-child(9) {
+.fonts-container .fonts-list > li:nth-child(9) {
     font-family: source;
 }
 
-.fonts-container .fonts-list>li:nth-child(10) {
+.fonts-container .fonts-list > li:nth-child(10) {
     font-family: dancing;
 }

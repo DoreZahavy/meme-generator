@@ -7,51 +7,47 @@
     background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     pointer-events: none;
-
     transition: opacity 0.6s;
     opacity: 0;
 }
 
-.share-fallback .shade-screen.show{
+.share-fallback .shade-screen.show {
     opacity: 1;
     pointer-events: auto;
 }
 
-.share-fallback .share-modal{
-display: none;
-position: fixed;
-background-color: var(--clr1);
-top: 30vh;
-left: 20vw;
-height:40vh;
-width: 60vw;
-padding: 20px;
-/* border: 2px solid var(--clr3); */
-border-radius: 2em;
-box-shadow: 0 0 20px var(--clr4);
-}
-.share-fallback .share-modal.show{
-display: block;
+.share-fallback .share-modal {
+    display: none;
+    position: fixed;
+    background-color: var(--clr1);
+    top: 30vh;
+    left: 20vw;
+    height: 40vh;
+    width: 60vw;
+    padding: 20px;
+    border-radius: 2em;
+    box-shadow: 0 0 20px var(--clr4);
 }
 
+.share-fallback .share-modal.show {
+    display: block;
+}
 
-
-.share-fallback .fb-upload{
+.share-fallback .fb-upload {
     display: flex;
     justify-content: center;
     width: 35px;
     height: 35px;
     border-radius: 0.5em;
     background-color: gray;
-   
     border-style: none;
 }
 
-.share-fallback .fb-upload img{
+.share-fallback .fb-upload img {
     width: 20px;
     height: 20px;
 }
 
-.share-fallback .fb-upload:hover{
+.share-fallback .fb-upload:hover {
     background-color: rgb(30, 48, 80);
 }

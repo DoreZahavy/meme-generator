@@ -1,22 +1,17 @@
 /* general */
+
 * {
     box-sizing: border-box;
 }
 
 /* tags */
+
 html {
-    /* color: var(--clrPrimarybase); */
-    /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif */
     font-family: impact1;
     letter-spacing: 0.12em;
-   
 }
 
 body {
-    /* height:100%; */
-    /* min-height: 100vh; */
     margin: 0;
     background-color: var(--clr1);
 }
-
-

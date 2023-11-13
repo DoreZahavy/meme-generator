@@ -23,27 +23,18 @@
     border: 5px solid var(--clr3);
     border-radius: 1em;
     padding: 15px;
-
     background-color: var(--clr2);
     margin-block-start: 20px;
-
-
 }
 
-
-
-.control-area .txt-btns>* {
+.control-area .txt-btns > * {
     border: 2px solid var(--clr3);
     background-color: var(--clr1);
     border-radius: 0.5em;
     width: 45px;
     height: 45px;
     cursor: pointer;
-
-
 }
-
-
 
 .control-area .clr-inputs input {
     width: 45px;
@@ -63,7 +54,7 @@
     margin-inline: auto;
 }
 
-.control-area .url-btns>* {
+.control-area .url-btns > * {
     display: flex;
     justify-content: center;
     width: 45px;
@@ -73,11 +64,8 @@
     cursor: pointer;
 }
 
-
-
 .control-area .fb-upload {
     background-color: gray;
-
     border-style: none;
 }
 
@@ -87,13 +75,11 @@
 
 .control-area img {
     width: 30px;
-    /* height: 30px; */
 }
 
 .control-area .save-btn {
     border: 2px solid var(--clr3);
     background-color: var(--clr1);
-
 }
 
 .control-area .dl-link {
@@ -102,7 +88,6 @@
     text-decoration: none;
     border: 2px solid var(--clr3);
     background-color: var(--clr1);
-
 }
 
 .control-area #line-txt {
@@ -111,7 +96,6 @@
     border-radius: 0.3em;
     height: 2.5em;
 }
-
 
 .control-area .share-api {
     border: 2px solid var(--clr3);
@@ -125,11 +109,9 @@
 .control-area .save-btn:hover,
 .control-area .share-api:hover,
 .control-area .dl-link:hover,
-.control-area .txt-btns>*:hover {
+.control-area .txt-btns > *:hover {
     background-color: var(--clr5);
 }
-
-
 
 .icon-carousel .icon-btn {
     background-color: transparent;
@@ -149,25 +131,18 @@
     border-radius: 0.5em;
     cursor: pointer;
     margin-inline: 0.3em;
-
 }
-
-
 
 .icon-carousel {
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
 }
-
 
 .icon-carousel .carousel-btn:hover,
 .icon-carousel .icon-btn:hover {
     background-color: var(--clr5);
 }
-
-
 
 .control-area .font-screen {
     position: absolute;
@@ -179,7 +154,6 @@
     cursor: pointer;
     pointer-events: none;
     border-radius: 1em;
-
     transition: opacity 0.6s;
     opacity: 0;
 }
@@ -189,8 +163,8 @@
     pointer-events: auto;
 }
 
-.txt-btns>*,
-.url-btns>*,
+.txt-btns > *,
+.url-btns > *,
 .carousel-btn {
     width: 45px;
     height: 45px;
@@ -202,9 +176,7 @@
     margin: 0 auto;
 }
 
-.txt-btns>* {
-
-
+.txt-btns > * {
     margin-inline: 0.3em;
 }
 
@@ -218,30 +190,30 @@
     border-radius: 0.3em;
 }
 
-[title="Font Size"], 
-[title="Stroke Color"], 
-[title="Fill Color"], 
-[title="Outline"], 
-[title="Save Meme"], 
-[title="Share on Facebook"], 
-[title="Download"], 
-[title="Share Website"], 
-[title="Delete Line"], 
-[title="Add Line"]{
+[title="Font Size"],
+[title="Stroke Color"],
+[title="Fill Color"],
+[title="Outline"],
+[title="Save Meme"],
+[title="Share on Facebook"],
+[title="Download"],
+[title="Share Website"],
+[title="Delete Line"],
+[title="Add Line"] {
     position: relative;
-  }
+}
 
-  [title="Font Size"]:hover::after,
-  [title="Fill Color"]:hover::after,
-  [title="Stroke Color"]:hover::after,
-  [title="Outline"]:hover::after,
-  [title="Save Meme"]:hover::after,
-  [title="Share on Facebook"]:hover::after,
-  [title="Download"]:hover::after,
-  [title="Share Website"]:hover::after,
-  [title="Delete Line"]:hover::after,
-  [title="Add Line"]:hover::after{
-    font-family: 'Times New Roman', Times, serif;
+[title="Font Size"]:hover::after,
+[title="Fill Color"]:hover::after,
+[title="Stroke Color"]:hover::after,
+[title="Outline"]:hover::after,
+[title="Save Meme"]:hover::after,
+[title="Share on Facebook"]:hover::after,
+[title="Download"]:hover::after,
+[title="Share Website"]:hover::after,
+[title="Delete Line"]:hover::after,
+[title="Add Line"]:hover::after {
+    font-family: "Times New Roman", Times, serif;
     letter-spacing: 0.1px;
     content: attr(title);
     position: absolute;
@@ -256,4 +228,4 @@
     width: max-content;
     left: 12px;
     z-index: 2;
-  }
+}
